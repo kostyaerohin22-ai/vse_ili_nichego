@@ -1,0 +1,1545 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Запись — Шиномонтаж в Зажопинске</title>
+  <style>
+    * {
+      box-sizing: border-box
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: #F6F7F8;
+      color: #1F2328;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body.locked {
+      overflow: hidden
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit
+    }
+
+    svg {
+      display: block
+    }
+
+    .container {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 20px
+    }
+
+    /* Header */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, .94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #E9ECEF
+    }
+
+    .header__inner {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      height: 72px
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0
+    }
+
+    .logo__mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: #FF6A00;
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      font-size: 18px
+    }
+
+    .logo__text {
+      font-weight: 800;
+      font-size: 15px;
+      letter-spacing: .06em;
+      line-height: 1.1
+    }
+
+    .logo__text small {
+      display: block;
+      font-weight: 500;
+      font-size: 11px;
+      letter-spacing: .02em;
+      color: #6B7178;
+      margin-top: 2px
+    }
+
+    .nav {
+      display: flex;
+      gap: 24px;
+      margin-left: 6px
+    }
+
+    .nav a {
+      font-size: 15px;
+      color: #4A5058;
+      font-weight: 500;
+      transition: .15s
+    }
+
+    .nav a:hover {
+      color: #FF6A00
+    }
+
+    .header__actions {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 16px
+    }
+
+    .login-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #4A5058;
+      white-space: nowrap;
+      transition: .15s;
+    }
+
+    .login-link:hover {
+      color: #FF6A00
+    }
+
+    .login-link svg {
+      flex-shrink: 0
+    }
+
+    .phone {
+      font-weight: 700;
+      font-size: 15px;
+      white-space: nowrap
+    }
+
+    .phone:hover {
+      color: #FF6A00
+    }
+
+    /* Page head */
+    .page {
+      padding: 36px 0 72px
+    }
+
+    .back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #6B7178;
+      margin-bottom: 18px;
+      transition: .15s
+    }
+
+    .back:hover {
+      color: #FF6A00
+    }
+
+    .page h1 {
+      font-size: clamp(28px, 3.4vw, 40px);
+      line-height: 1.1;
+      letter-spacing: -.02em;
+      margin: 0 0 8px;
+      font-weight: 800
+    }
+
+    .page__sub {
+      font-size: 16px;
+      color: #5A6169;
+      margin: 0 0 26px
+    }
+
+    /* Progress */
+    .progress {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 28px;
+      flex-wrap: wrap
+    }
+
+    .progress__item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #8A9199;
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: default
+    }
+
+    .progress__item span {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: #EDF0F2;
+      color: #8A9199;
+      display: grid;
+      place-items: center;
+      font-size: 12px;
+      font-weight: 800
+    }
+
+    .progress__item.is-active {
+      color: #1F2328
+    }
+
+    .progress__item.is-active span {
+      background: #FF6A00;
+      color: #fff
+    }
+
+    .progress__item.is-done {
+      color: #1B7A45;
+      cursor: pointer
+    }
+
+    .progress__item.is-done span {
+      background: #EAF7EF;
+      color: #1B7A45
+    }
+
+    .progress__line {
+      width: 34px;
+      height: 1px;
+      background: #DDE1E5
+    }
+
+    /* Layout */
+    .layout {
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 28px;
+      align-items: start
+    }
+
+    .layout.is-done {
+      grid-template-columns: 1fr
+    }
+
+    .layout.is-done .summary-card {
+      display: none
+    }
+
+    .panel {
+      background: #fff;
+      border: 1px solid #E9ECEF;
+      border-radius: 20px;
+      padding: 28px;
+      box-shadow: 0 12px 32px rgba(31, 35, 40, .05)
+    }
+
+    .step {
+      display: none
+    }
+
+    .step.is-active {
+      display: block
+    }
+
+    .step__label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      color: #8A9199;
+      margin: 0 0 6px
+    }
+
+    .step h2 {
+      font-size: 24px;
+      margin: 0 0 6px;
+      letter-spacing: -.01em
+    }
+
+    .step__hint {
+      font-size: 14px;
+      color: #6B7178;
+      margin: 0 0 22px;
+      line-height: 1.45
+    }
+
+    /* Category picks */
+    .picks {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px
+    }
+
+    .pick {
+      position: relative;
+      text-align: left;
+      background: #fff;
+      border: 1px solid #DDE1E5;
+      border-radius: 14px;
+      padding: 14px;
+      cursor: pointer;
+      transition: .15s;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .pick:hover {
+      border-color: #B9C0C7
+    }
+
+    .pick b {
+      font-size: 15px;
+      line-height: 1.25
+    }
+
+    .pick small {
+      font-size: 12px;
+      color: #8A9199
+    }
+
+    .pick__price {
+      margin-top: auto;
+      font-size: 14px;
+      font-weight: 800
+    }
+
+    .pick.is-selected {
+      border-color: #FF6A00;
+      background: #FFF8F3;
+      box-shadow: 0 0 0 2px rgba(255, 106, 0, .12)
+    }
+
+    .pick.is-selected::after {
+      content: '✓';
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #FF6A00;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 800;
+      display: grid;
+      place-items: center;
+    }
+
+    .other-box {
+      display: none;
+      margin-top: 14px
+    }
+
+    .other-box.is-visible {
+      display: block
+    }
+
+    .other-box label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      color: #6B7178;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      margin-bottom: 6px
+    }
+
+    .other-box textarea {
+      width: 100%;
+      min-height: 92px;
+      border: 1px solid #DDE1E5;
+      border-radius: 10px;
+      padding: 12px;
+      resize: vertical;
+      outline: none;
+      transition: .15s;
+    }
+
+    .other-box textarea:focus {
+      border-color: #FF6A00;
+      box-shadow: 0 0 0 3px rgba(255, 106, 0, .12)
+    }
+
+    /* Dates & times */
+    .dates {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(74px, 1fr));
+      gap: 8px;
+      margin-bottom: 22px
+    }
+
+    .date {
+      border: 1px solid #DDE1E5;
+      background: #fff;
+      border-radius: 10px;
+      padding: 9px 8px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #4A5058;
+      cursor: pointer;
+      line-height: 1.2;
+      text-align: center;
+      transition: .15s;
+    }
+
+    .date span {
+      display: block;
+      font-size: 11px;
+      font-weight: 500;
+      color: #8A9199;
+      margin-top: 2px
+    }
+
+    .date:hover {
+      border-color: #B9C0C7
+    }
+
+    .date.is-active {
+      background: #1F2328;
+      border-color: #1F2328;
+      color: #fff
+    }
+
+    .date.is-active span {
+      color: #C9CED4
+    }
+
+    .times {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px
+    }
+
+    .slot {
+      border: 1px solid #DDE1E5;
+      background: #fff;
+      border-radius: 10px;
+      padding: 12px 8px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #1F2328;
+      cursor: pointer;
+      transition: .15s;
+    }
+
+    .slot:hover:not(:disabled) {
+      border-color: #FF6A00;
+      color: #E85F00
+    }
+
+    .slot.is-active {
+      background: #FF6A00;
+      border-color: #FF6A00;
+      color: #fff
+    }
+
+    .slot:disabled {
+      background: #F3F5F6;
+      border-color: #EDF0F2;
+      color: #B4BAC1;
+      cursor: not-allowed;
+      text-decoration: line-through
+    }
+
+    .legend {
+      display: flex;
+      gap: 18px;
+      margin-top: 14px;
+      font-size: 12px;
+      color: #8A9199;
+      flex-wrap: wrap
+    }
+
+    .legend i {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 3px;
+      margin-right: 6px;
+      vertical-align: middle
+    }
+
+    .legend .free {
+      background: #fff;
+      border: 1px solid #DDE1E5
+    }
+
+    .legend .busy {
+      background: #F3F5F6;
+      border: 1px solid #EDF0F2
+    }
+
+    .legend .sel {
+      background: #FF6A00
+    }
+
+    .note-box {
+      background: #F6F7F8;
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-size: 13px;
+      line-height: 1.45;
+      color: #5A6169;
+      margin-top: 18px
+    }
+
+    /* Form */
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px
+    }
+
+    .field {
+      min-width: 0
+    }
+
+    .field--full {
+      grid-column: 1/-1
+    }
+
+    .field label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      color: #6B7178;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      margin-bottom: 6px
+    }
+
+    .field input,
+    .field textarea {
+      width: 100%;
+      height: 48px;
+      border: 1px solid #DDE1E5;
+      border-radius: 10px;
+      padding: 0 12px;
+      background: #fff;
+      outline: none;
+      transition: .15s;
+    }
+
+    .field input:focus {
+      border-color: #FF6A00;
+      box-shadow: 0 0 0 3px rgba(255, 106, 0, .12)
+    }
+
+    .field input.is-invalid {
+      border-color: #D64545;
+      box-shadow: 0 0 0 3px rgba(214, 69, 69, .10)
+    }
+
+    .consent {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      margin-top: 20px;
+      font-size: 13px;
+      line-height: 1.45;
+      color: #5A6169
+    }
+
+    .consent input {
+      margin-top: 2px;
+      width: 18px;
+      height: 18px;
+      accent-color: #FF6A00;
+      flex-shrink: 0
+    }
+
+    .rules {
+      background: #FFF4EC;
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-size: 13px;
+      line-height: 1.45;
+      color: #8A3B00;
+      margin-top: 18px
+    }
+
+    /* Alert */
+    .alert {
+      display: none;
+      background: #FDECEC;
+      color: #A32B2B;
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-size: 14px;
+      margin-bottom: 16px
+    }
+
+    .alert.is-visible {
+      display: block
+    }
+
+    /* Footer */
+    .panel-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: 26px;
+      padding-top: 20px;
+      border-top: 1px solid #EDF0F2;
+      flex-wrap: wrap
+    }
+
+    .foot-left {
+      font-size: 14px;
+      color: #6B7178;
+      line-height: 1.4
+    }
+
+    .foot-left b {
+      color: #1F2328;
+      display: block;
+      font-size: 15px;
+      margin-top: 2px
+    }
+
+    .foot-actions {
+      display: flex;
+      gap: 10px;
+      margin-left: auto
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      height: 48px;
+      padding: 0 22px;
+      border-radius: 10px;
+      border: 1px solid transparent;
+      font-weight: 600;
+      font-size: 15px;
+      cursor: pointer;
+      transition: .18s;
+      white-space: nowrap;
+    }
+
+    .btn--primary {
+      background: #FF6A00;
+      color: #fff
+    }
+
+    .btn--primary:hover {
+      background: #E85F00
+    }
+
+    .btn--ghost {
+      background: #fff;
+      border-color: #DDE1E5;
+      color: #1F2328
+    }
+
+    .btn--ghost:hover {
+      border-color: #FF6A00;
+      color: #E85F00
+    }
+
+    .btn:focus-visible,
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid rgba(255, 106, 0, .35);
+      outline-offset: 2px
+    }
+
+    /* Summary */
+    .summary-card {
+      background: #fff;
+      border: 1px solid #E9ECEF;
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: 0 12px 32px rgba(31, 35, 40, .05);
+      position: sticky;
+      top: 96px;
+    }
+
+    .summary-card h2 {
+      font-size: 18px;
+      margin: 0 0 16px
+    }
+
+    .sum-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px;
+      display: grid;
+      gap: 10px
+    }
+
+    .sum-list li {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      font-size: 14px;
+      line-height: 1.4
+    }
+
+    .sum-list li span {
+      color: #4A5058
+    }
+
+    .sum-list li b {
+      white-space: nowrap
+    }
+
+    .sum-list .muted {
+      color: #8A9199;
+      font-size: 14px
+    }
+
+    .sum-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      font-size: 14px;
+      padding: 10px 0;
+      border-top: 1px solid #EDF0F2
+    }
+
+    .sum-row span {
+      color: #6B7178
+    }
+
+    .sum-row b {
+      text-align: right
+    }
+
+    .sum-note {
+      font-size: 12px;
+      line-height: 1.5;
+      color: #8A9199;
+      margin-top: 14px
+    }
+
+    /* Success */
+    .success {
+      display: none;
+      text-align: left
+    }
+
+    .success.is-active {
+      display: block
+    }
+
+    .success__icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: #EAF7EF;
+      color: #1E9E5A;
+      display: grid;
+      place-items: center;
+      margin-bottom: 18px
+    }
+
+    .success h2 {
+      font-size: 26px;
+      margin: 0 0 8px
+    }
+
+    .success__sub {
+      font-size: 15px;
+      color: #5A6169;
+      line-height: 1.5;
+      margin: 0 0 22px
+    }
+
+    .success__box {
+      border: 1px solid #E9ECEF;
+      border-radius: 14px;
+      padding: 18px;
+      display: grid;
+      gap: 12px;
+      margin-bottom: 22px
+    }
+
+    .success__row {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      font-size: 14px
+    }
+
+    .success__row span {
+      color: #6B7178
+    }
+
+    .success__row b {
+      text-align: right
+    }
+
+    .success__total {
+      border-top: 1px solid #EDF0F2;
+      padding-top: 12px;
+      font-size: 15px
+    }
+
+    .success__actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap
+    }
+
+    /* Responsive */
+    @media (max-width:980px) {
+      .layout {
+        grid-template-columns: 1fr
+      }
+
+      .summary-card {
+        position: static
+      }
+
+      .nav {
+        display: none
+      }
+
+      .picks {
+        grid-template-columns: repeat(2, 1fr)
+      }
+    }
+
+    @media (max-width:720px) {
+      .header__inner {
+        height: 64px
+      }
+
+      .phone {
+        display: none
+      }
+
+      .page {
+        padding: 24px 0 56px
+      }
+
+      .panel {
+        padding: 20px
+      }
+
+      .picks {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr
+      }
+
+      .times {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .progress {
+        gap: 6px
+      }
+
+      .progress__line {
+        width: 16px
+      }
+
+      .progress__item {
+        font-size: 13px
+      }
+
+      .panel-foot {
+        align-items: stretch
+      }
+
+      .foot-actions {
+        width: 100%
+      }
+
+      .foot-actions .btn {
+        flex: 1
+      }
+    }
+
+    @media (max-width:420px) {
+      .picks {
+        grid-template-columns: 1fr
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="header">
+    <div class="container header__inner">
+      <a class="logo" href="index.html" id="ALogo" data-name="ALogo">
+        <span class="logo__mark">Ш</span>
+        <span class="logo__text">ШИНОМОНТАЖ<small>Зажопинск</small></span>
+      </a>
+      <nav class="nav">
+        <a href="index.html#services" id="ANavServices" data-name="ANavServices">Услуги</a>
+        <a href="index.html#masters" id="ANavMasters" data-name="ANavMasters">Мастера</a>
+        <a href="index.html#reviews" id="ANavReviews" data-name="ANavReviews">Отзывы</a>
+        <a href="index.html#contacts" id="ANavContacts" data-name="ANavContacts">Контакты</a>
+      </nav>
+      <div class="header__actions">
+        <a class="login-link" href="login.html" id="AHeaderLogin" data-name="AHeaderLogin">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+            <circle cx="12" cy="7" r="4" />
+          </svg>
+          Войти
+        </a>
+        <a class="phone" href="tel:+70000000000" id="AHeaderPhone" data-name="AHeaderPhone">+7 (777) 777-77-77</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="page">
+    <div class="container">
+      <a class="back" href="index.html" id="ABackHome" data-name="ABackHome">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 12H5M5 12l6-6M5 12l6 6" />
+        </svg>
+        На главную
+      </a>
+
+      <h1 id="LBookingTitle" data-name="LBookingTitle">Запись в шиномонтаж</h1>
+      <p class="page__sub">Три шага — и время за вами. Без звонков и очередей.</p>
+
+      <div class="progress" id="progress" data-name="BStep1–BStep3">
+        <button class="progress__item is-active" data-step="1" type="button" id="BStep1"
+          data-name="BStep1"><span>1</span> Услуга</button>
+        <div class="progress__line"></div>
+        <button class="progress__item" data-step="2" type="button" id="BStep2" data-name="BStep2"><span>2</span>
+          Время</button>
+        <div class="progress__line"></div>
+        <button class="progress__item" data-step="3" type="button" id="BStep3" data-name="BStep3"><span>3</span>
+          Контакты</button>
+      </div>
+
+      <div class="layout" id="layout">
+        <div class="panel">
+          <div class="alert" id="alert"></div>
+
+          <!-- Шаг 1 -->
+          <section class="step is-active" data-panel="1">
+            <p class="step__label" id="LStepLabel" data-name="LStepLabel">Шаг 1 из 3</p>
+            <h2 id="LStepTitle" data-name="LStepTitle">Что нужно сделать?</h2>
+            <p class="step__hint" id="LStepHint" data-name="LStepHint">Можно выбрать несколько работ. Если не нашли
+              нужное — отметьте «Другое».</p>
+
+            <div class="picks" id="picks">
+              <button class="pick" type="button" data-cat="tire" id="BSelectTire" data-name="BSelectTire"><b>Смена
+                  шин</b><small>около 1 часа</small><span class="pick__price">1 500 ₽</span></button>
+              <button class="pick" type="button" data-cat="balance" id="BSelectBalance"
+                data-name="BSelectBalance"><b>Балансировка колёс</b><small>около 30 минут</small><span
+                  class="pick__price">600 ₽</span></button>
+              <button class="pick" type="button" data-cat="align" id="BSelectAlign"
+                data-name="BSelectAlign"><b>Развал-схождение</b><small>около 1 часа</small><span class="pick__price">1
+                  200 ₽</span></button>
+              <button class="pick" type="button" data-cat="oil" id="BSelectOil" data-name="BSelectOil"><b>Замена
+                  масла</b><small>около 30 минут</small><span class="pick__price">800 ₽</span></button>
+              <button class="pick" type="button" data-cat="diag" id="BSelectDiag"
+                data-name="BSelectDiag"><b>Диагностика</b><small>около 1 часа</small><span class="pick__price">1 000
+                  ₽</span></button>
+              <button class="pick" type="button" data-cat="repair" id="BSelectRepair"
+                data-name="BSelectRepair"><b>Мелкий ремонт</b><small>около 1 часа</small><span class="pick__price">700
+                  ₽</span></button>
+              <button class="pick" type="button" data-cat="electric" id="BSelectElectric"
+                data-name="BSelectElectric"><b>Электрика</b><small>около 1 часа</small><span class="pick__price">900
+                  ₽</span></button>
+              <button class="pick" type="button" data-cat="inspection" id="BSelectInspection"
+                data-name="BSelectInspection"><b>Техосмотр</b><small>около 1 часа</small><span class="pick__price">1 500
+                  ₽</span></button>
+              <button class="pick" type="button" data-cat="other" id="BSelectOther"
+                data-name="BSelectOther"><b>Другое</b><small>Опишу проблему</small><span class="pick__price">по
+                  осмотру</span></button>
+            </div>
+
+            <div class="other-box" id="otherBox">
+              <label for="TBookingProblem" id="LProblemLabel" data-name="LProblemLabel">Опишите проблему</label>
+              <textarea id="TBookingProblem" placeholder="Например: стучит справа при повороте" name="TBookingProblem"
+                data-name="TBookingProblem"></textarea>
+            </div>
+
+            <div class="panel-foot">
+              <div class="foot-left" id="LFootPrice" data-name="LFootPrice">Предварительно<b id="footPrice1">—</b></div>
+              <div class="foot-actions">
+                <button class="btn btn--primary" type="button" data-next="2" id="BNextStep1"
+                  data-name="BNextStep1">Далее</button>
+              </div>
+            </div>
+          </section>
+
+          <!-- Шаг 2 -->
+          <section class="step" data-panel="2">
+            <p class="step__label" id="LStepLabel-2" data-name="LStepLabel">Шаг 2 из 3</p>
+            <h2 id="LStepTitle-2" data-name="LStepTitle">Когда удобно?</h2>
+            <p class="step__hint" id="LStepHint-2" data-name="LStepHint">Выберите день и свободный час. Запись на 7 дней
+              вперёд.</p>
+
+            <div class="dates" id="dates" data-name="BDay1–BDay7"></div>
+            <div class="times" id="times" data-name="BTimeSlot"></div>
+
+            <div class="legend" id="LTimeLegend" data-name="LTimeLegend">
+              <span><i class="free"></i>Свободно</span>
+              <span><i class="busy"></i>Занято</span>
+              <span><i class="sel"></i>Выбрано</span>
+            </div>
+
+            <div class="note-box" id="LTimeNote" data-name="LTimeNote">
+              Если работа займёт больше часа, мастер предложит другое свободное время — обычно в тот же день.
+            </div>
+
+            <div class="panel-foot">
+              <div class="foot-left" id="LSelectedTime" data-name="LSelectedTime">Вы выбрали<b id="footTime2">—</b>
+              </div>
+              <div class="foot-actions">
+                <button class="btn btn--ghost" type="button" data-back="1" id="BBackStep2"
+                  data-name="BBackStep2">Назад</button>
+                <button class="btn btn--primary" type="button" data-next="3" id="BNextStep2"
+                  data-name="BNextStep2">Далее</button>
+              </div>
+            </div>
+          </section>
+
+          <!-- Шаг 3 -->
+          <section class="step" data-panel="3">
+            <p class="step__label" id="LStepLabel-3" data-name="LStepLabel">Шаг 3 из 3</p>
+            <h2 id="LStepTitle-3" data-name="LStepTitle">Автомобиль и контакты</h2>
+            <p class="step__hint" id="LStepHint-3" data-name="LStepHint">Данные нужны мастеру, чтобы подготовиться к
+              работе.</p>
+
+            <div class="form-grid">
+              <div class="field">
+                <label for="TBrand">Марка</label>
+                <input id="TBrand" type="text" placeholder="Lada" autocomplete="off" name="TBrand" data-name="TBrand">
+              </div>
+              <div class="field">
+                <label for="TModel">Модель</label>
+                <input id="TModel" type="text" placeholder="Vesta" autocomplete="off" name="TModel" data-name="TModel">
+              </div>
+              <div class="field">
+                <label for="TPlate">Госномер</label>
+                <input id="TPlate" type="text" placeholder="А123ВС 00" autocomplete="off" name="TPlate"
+                  data-name="TPlate">
+              </div>
+              <div class="field">
+                <label for="TName">Имя</label>
+                <input id="TName" type="text" placeholder="Иван" autocomplete="name" name="TName" data-name="TName">
+              </div>
+              <div class="field">
+                <label for="TPhone">Телефон</label>
+                <input id="TPhone" type="tel" placeholder="+7 (___) ___-__-__" autocomplete="tel" name="TPhone"
+                  data-name="TPhone">
+              </div>
+              <div class="field">
+                <label for="TEmail">Email</label>
+                <input id="TEmail" type="email" placeholder="ivan@mail.ru" autocomplete="email" name="TEmail"
+                  data-name="TEmail">
+              </div>
+            </div>
+
+            <label class="consent">
+              <input type="checkbox" id="CConsent" name="CConsent" data-name="CConsent">
+              <span>Согласен на обработку данных и с правилами записи</span>
+            </label>
+
+            <div class="rules" id="LRules" data-name="LRules">
+              Бесплатно отменить или перенести запись можно за 24 часа до визита. Позже — по уважительной причине или со
+              штрафом 500 ₽.
+            </div>
+
+            <div class="panel-foot">
+              <div class="foot-left" id="LFootPrice-2" data-name="LFootPrice">Предварительно<b id="footPrice3">—</b>
+              </div>
+              <div class="foot-actions">
+                <button class="btn btn--ghost" type="button" data-back="2" id="BBackStep3"
+                  data-name="BBackStep3">Назад</button>
+                <button class="btn btn--primary" type="button" id="BSubmitBooking"
+                  data-name="BSubmitBooking">Записаться</button>
+              </div>
+            </div>
+          </section>
+
+          <!-- Успех -->
+          <section class="success" data-panel="success">
+            <div class="success__icon">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 6 9 17l-5-5" />
+              </svg>
+            </div>
+            <h2 id="LSuccessTitle" data-name="LSuccessTitle">Заявка создана</h2>
+            <p class="success__sub" id="LSuccessText" data-name="LSuccessText">Мы отправили подтверждение на email.
+              Мастер посмотрит автомобиль и назовёт точную стоимость до начала работ.</p>
+
+            <div class="success__box">
+              <div class="success__row"><span>Номер</span><b id="LOrderNumber" data-name="LOrderNumber">№ 1042</b></div>
+              <div class="success__row"><span>Работы</span><b id="LOrderWorks" data-name="LOrderWorks">Смена шин</b>
+              </div>
+              <div class="success__row"><span>Когда</span><b id="LOrderWhen" data-name="LOrderWhen">Сегодня, 15:00</b>
+              </div>
+              <div class="success__row success__total"><span>Предварительно</span><b id="LOrderTotal"
+                  data-name="LOrderTotal">1 500 ₽</b></div>
+            </div>
+
+            <div class="success__actions">
+              <a class="btn btn--primary" href="cabinet-client.html" id="BMyOrders" data-name="BMyOrders">Мои записи</a>
+              <button class="btn btn--ghost" type="button" id="BAddCalendar" data-name="BAddCalendar">Добавить в
+                календарь</button>
+              <a class="btn btn--ghost" href="index.html" id="BGoHome" data-name="BGoHome">На главную</a>
+            </div>
+          </section>
+        </div>
+
+        <aside class="summary-card" id="LSummaryCard" data-name="LSummaryCard">
+          <h2>Ваша запись</h2>
+          <ul class="sum-list" id="sumList">
+            <li class="muted">Пока ничего не выбрано</li>
+          </ul>
+          <div class="sum-row"><span>Предварительно</span><b id="sumTotal">—</b></div>
+          <div class="sum-row"><span>Время</span><b id="sumWhen">—</b></div>
+          <div class="sum-note">Точную стоимость мастер назовёт после осмотра, до начала работ. Оплата — после работы.
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    /* ---------- Данные ---------- */
+    const CATS = {
+      tire: { label: 'Смена шин', price: 1500, min: 60 },
+      balance: { label: 'Балансировка', price: 600, min: 30 },
+      align: { label: 'Развал-схождение', price: 1200, min: 60 },
+      oil: { label: 'Замена масла', price: 800, min: 30 },
+      diag: { label: 'Диагностика', price: 1000, min: 60 },
+      repair: { label: 'Мелкий ремонт', price: 700, min: 60 },
+      electric: { label: 'Электрика', price: 900, min: 60 },
+      inspection: { label: 'Техосмотр', price: 1500, min: 60 },
+      other: { label: 'Другое', price: null, min: null }
+    };
+
+    const MONTHS = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
+    const WEEKDAYS = ['вс', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'];
+
+    const selected = new Set();
+    let step = 1;
+    let selectedDate = '';
+    let selectedDateText = '';
+    let selectedTime = '';
+
+    const alertBox = document.getElementById('alert');
+    const picksBox = document.getElementById('picks');
+    const otherBox = document.getElementById('otherBox');
+    const problemInput = document.getElementById('TBookingProblem');
+    const datesBox = document.getElementById('dates');
+    const timesBox = document.getElementById('times');
+    const layout = document.getElementById('layout');
+
+    /* ---------- Утилиты ---------- */
+    function fmtPrice(v) {
+      return v.toLocaleString('ru-RU') + ' ₽';
+    }
+
+    function fmtDuration(min) {
+      if (!min) return '';
+      if (min < 60) return 'около ' + min + ' минут';
+      const h = min / 60;
+      if (h === 1) return 'около 1 часа';
+      if (h === 1.5) return 'около 1,5 часов';
+      return 'около ' + h + ' часов';
+    }
+
+    function isoDate(d) {
+      return d.getFullYear() + '-' +
+        String(d.getMonth() + 1).padStart(2, '0') + '-' +
+        String(d.getDate()).padStart(2, '0');
+    }
+
+    function showError(text) {
+      alertBox.textContent = text;
+      alertBox.classList.add('is-visible');
+      alertBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    function clearError() {
+      alertBox.classList.remove('is-visible');
+      alertBox.textContent = '';
+    }
+
+    /* ---------- Телефон: +7 при фокусе ---------- */
+    function setupPhonePrefix(input) {
+      if (!input) return;
+
+      input.addEventListener('focus', () => {
+        if (input.value.trim()) return;
+
+        input.value = '+7 ';
+        const end = input.value.length;
+
+        setTimeout(() => {
+          if (document.activeElement === input) input.setSelectionRange(end, end);
+        }, 0);
+      });
+
+      input.addEventListener('blur', () => {
+        if (input.value.trim() === '+7') input.value = '';
+      });
+    }
+
+    /* ---------- Итоги ---------- */
+    function calc() {
+      let total = 0;
+      let mins = 0;
+      let hasOther = false;
+
+      selected.forEach(key => {
+        const cat = CATS[key];
+        if (cat.price) { total += cat.price; mins += cat.min; }
+        else hasOther = true;
+      });
+
+      let totalText;
+      if (!total && hasOther) totalText = 'по осмотру';
+      else if (hasOther) totalText = 'от ' + fmtPrice(total);
+      else if (total) totalText = fmtPrice(total);
+      else totalText = '—';
+
+      return { total, mins, hasOther, totalText };
+    }
+
+    function worksText() {
+      if (!selected.size) return '—';
+      return [...selected].map(k => CATS[k].label).join(' + ');
+    }
+
+    function whenText() {
+      if (selectedDateText && selectedTime) return selectedDateText + ', ' + selectedTime;
+      return '—';
+    }
+
+    function updateSummary() {
+      const { mins, totalText } = calc();
+
+      const list = document.getElementById('sumList');
+      if (!selected.size) {
+        list.innerHTML = '<li class="muted">Пока ничего не выбрано</li>';
+      } else {
+        list.innerHTML = [...selected].map(key => {
+          const cat = CATS[key];
+          return '<li><span>' + cat.label + '</span><b>' + (cat.price ? fmtPrice(cat.price) : 'по осмотру') + '</b></li>';
+        }).join('');
+      }
+
+      const duration = mins ? ' · ' + fmtDuration(mins) : '';
+      document.getElementById('sumTotal').textContent = totalText;
+      document.getElementById('sumWhen').textContent = whenText();
+
+      document.getElementById('footPrice1').textContent = totalText;
+      document.getElementById('footPrice3').textContent = totalText;
+      document.getElementById('footTime2').textContent = whenText();
+    }
+
+    /* ---------- Выбор категорий ---------- */
+    picksBox.addEventListener('click', e => {
+      const btn = e.target.closest('.pick');
+      if (!btn) return;
+
+      const key = btn.dataset.cat;
+      if (selected.has(key)) selected.delete(key);
+      else selected.add(key);
+
+      btn.classList.toggle('is-selected', selected.has(key));
+
+      if (key === 'other') {
+        otherBox.classList.toggle('is-visible', selected.has('other'));
+        if (selected.has('other')) setTimeout(() => problemInput.focus(), 100);
+      }
+
+      clearError();
+      updateSummary();
+    });
+
+    problemInput.addEventListener('input', () => {
+      if (problemInput.value.trim()) clearError();
+    });
+
+    /* ---------- Даты ---------- */
+    function isBusy(iso, hour) {
+      const day = Number(iso.slice(8, 10));
+      return hour === 12 || (day + hour) % 6 === 0;
+    }
+
+    function buildDates() {
+      const today = new Date();
+
+      for (let i = 0; i < 7; i++) {
+        const d = new Date(today);
+        d.setDate(today.getDate() + i);
+
+        const iso = isoDate(d);
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'date';
+        btn.id = 'BDay' + (i + 1);
+        btn.dataset.name = 'BDay' + (i + 1);
+        btn.dataset.date = iso;
+
+        let top;
+        if (i === 0) top = 'Сегодня';
+        else if (i === 1) top = 'Завтра';
+        else top = WEEKDAYS[d.getDay()] + ', ' + d.getDate();
+
+        btn.innerHTML = top + '<span>' + MONTHS[d.getMonth()] + '</span>';
+        btn.addEventListener('click', () => selectDate(btn, top, d));
+        datesBox.appendChild(btn);
+      }
+
+      const first = datesBox.querySelector('.date');
+      if (first) {
+        first.click();
+        if (!timesBox.querySelector('.slot:not(:disabled)')) {
+          const second = datesBox.querySelectorAll('.date')[1];
+          if (second) second.click();
+        }
+      }
+    }
+
+    function selectDate(btn, top, d) {
+      document.querySelectorAll('.date').forEach(b => b.classList.remove('is-active'));
+      btn.classList.add('is-active');
+
+      selectedDate = btn.dataset.date;
+      selectedTime = '';
+
+      if (top === 'Сегодня') selectedDateText = 'сегодня';
+      else if (top === 'Завтра') selectedDateText = 'завтра';
+      else selectedDateText = top.toLowerCase() + ' ' + MONTHS[d.getMonth()];
+
+      buildTimes();
+      clearError();
+      updateSummary();
+    }
+
+    /* ---------- Время ---------- */
+    function buildTimes() {
+      timesBox.innerHTML = '';
+
+      const now = new Date();
+      const todayISO = isoDate(now);
+
+      for (let h = 9; h <= 17; h++) {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'slot';
+        btn.id = 'BTimeSlot' + (h - 8);
+        btn.dataset.name = 'BTimeSlot' + (h - 8);
+        btn.dataset.time = String(h).padStart(2, '0') + ':00';
+        btn.textContent = btn.dataset.time + '–' + String(h + 1).padStart(2, '0') + ':00';
+
+        const past = selectedDate === todayISO && h <= now.getHours();
+        if (past || isBusy(selectedDate, h)) btn.disabled = true;
+
+        btn.addEventListener('click', () => selectTime(btn));
+        timesBox.appendChild(btn);
+      }
+    }
+
+    function selectTime(btn) {
+      if (btn.disabled) return;
+      document.querySelectorAll('.slot').forEach(b => b.classList.remove('is-active'));
+      btn.classList.add('is-active');
+      selectedTime = btn.dataset.time;
+      clearError();
+      updateSummary();
+    }
+
+    /* ---------- Навигация ---------- */
+    function go(n) {
+      clearError();
+
+      if (n > step) {
+        if (step === 1) {
+          if (!selected.size) return showError('Выберите хотя бы одну работу или «Другое».');
+          if (selected.has('other') && problemInput.value.trim().length < 3) {
+            problemInput.focus();
+            return showError('Опишите проблему — хотя бы пару слов.');
+          }
+        }
+        if (step === 2 && !selectedTime) {
+          return showError('Выберите свободное время.');
+        }
+      }
+
+      step = n;
+
+      document.querySelectorAll('.step').forEach(s => {
+        s.classList.toggle('is-active', Number(s.dataset.panel) === n);
+      });
+
+      document.querySelectorAll('.progress__item').forEach(item => {
+        const s = Number(item.dataset.step);
+        item.classList.toggle('is-active', s === n);
+        item.classList.toggle('is-done', s < n);
+        item.style.cursor = s < n ? 'pointer' : 'default';
+      });
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    document.querySelectorAll('[data-next]').forEach(btn => {
+      btn.addEventListener('click', () => go(Number(btn.dataset.next)));
+    });
+
+    document.querySelectorAll('[data-back]').forEach(btn => {
+      btn.addEventListener('click', () => go(Number(btn.dataset.back)));
+    });
+
+    document.querySelectorAll('.progress__item').forEach(item => {
+      item.addEventListener('click', () => {
+        const s = Number(item.dataset.step);
+        if (s < step) go(s);
+      });
+    });
+
+    /* ---------- Отправка ---------- */
+    document.getElementById('BSubmitBooking').addEventListener('click', () => {
+      const name = document.getElementById('TName');
+      const phone = document.getElementById('TPhone');
+      const email = document.getElementById('TEmail');
+      const consent = document.getElementById('CConsent');
+
+      [name, phone, email].forEach(f => f.classList.remove('is-invalid'));
+
+      if (!name.value.trim()) {
+        name.classList.add('is-invalid');
+        name.focus();
+        return showError('Укажите имя.');
+      }
+
+      if (phone.value.trim().length < 6) {
+        phone.classList.add('is-invalid');
+        phone.focus();
+        return showError('Укажите телефон для связи.');
+      }
+
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) {
+        email.classList.add('is-invalid');
+        email.focus();
+        return showError('Проверьте email — на него придёт подтверждение.');
+      }
+
+      if (!consent.checked) {
+        consent.focus();
+        return showError('Поставьте галочку согласия.');
+      }
+
+      const { totalText } = calc();
+      const num = 1000 + Math.floor(Math.random() * 900);
+
+      document.getElementById('LOrderNumber').textContent = '№ ' + num;
+      document.getElementById('LOrderWorks').textContent = worksText();
+      document.getElementById('LOrderWhen').textContent = whenText();
+      document.getElementById('LOrderTotal').textContent = totalText;
+
+      document.querySelectorAll('.step').forEach(s => s.classList.remove('is-active'));
+      document.querySelector('[data-panel="success"]').classList.add('is-active');
+      document.querySelectorAll('.progress__item').forEach(item => item.classList.add('is-done'));
+      layout.classList.add('is-done');
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    /* ---------- Календарь ---------- */
+    document.getElementById('BAddCalendar').addEventListener('click', () => {
+      if (!selectedDate || !selectedTime) return;
+
+      const [y, m, d] = selectedDate.split('-').map(Number);
+      const [hh, mm] = selectedTime.split(':').map(Number);
+
+      const start = new Date(y, m - 1, d, hh, mm, 0);
+      const end = new Date(start.getTime() + 60 * 60 * 1000);
+
+      const pad = v => String(v).padStart(2, '0');
+      const stamp = dt => dt.getFullYear() + pad(dt.getMonth() + 1) + pad(dt.getDate()) +
+        'T' + pad(dt.getHours()) + pad(dt.getMinutes()) + '00';
+
+      const ics = [
+        'BEGIN:VCALENDAR',
+        'VERSION:2.0',
+        'PRODID:-//Shinomontazh//RU',
+        'BEGIN:VEVENT',
+        'UID:' + Date.now() + '@shinomontazh',
+        'DTSTART:' + stamp(start),
+        'DTEND:' + stamp(end),
+        'SUMMARY:Шиномонтаж — запись',
+        'LOCATION:пгт. Заречье, ул. Центральная, 12',
+        'DESCRIPTION:Предварительная запись через сайт',
+        'END:VEVENT',
+        'END:VCALENDAR'
+      ].join('\r\n');
+
+      const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = 'zapis-shinomontazh.ics';
+      link.click();
+      URL.revokeObjectURL(link.href);
+    });
+
+    /* ---------- URL-параметр ---------- */
+    const param = new URLSearchParams(location.search).get('service');
+    if (param && CATS[param]) {
+      const btn = document.querySelector('.pick[data-cat="' + param + '"]');
+      if (btn) btn.click();
+    }
+
+    /* ---------- Старт ---------- */
+    setupPhonePrefix(document.getElementById('TPhone'));
+    buildDates();
+    updateSummary();
+  </script>
+</body>
+
+</html>

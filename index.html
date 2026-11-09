@@ -1,0 +1,2077 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Шиномонтаж в Зажопинске — запись онлайн за 1 минуту</title>
+  <style>
+    * {
+      box-sizing: border-box
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: #F6F7F8;
+      color: #1F2328;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body.locked {
+      overflow: hidden
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit
+    }
+
+    svg {
+      display: block
+    }
+
+    .container {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 20px
+    }
+
+    /* ---------- Header ---------- */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, .94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #E9ECEF;
+    }
+
+    .header__inner {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      height: 72px
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0
+    }
+
+    .logo__mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: #FF6A00;
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      font-size: 18px;
+    }
+
+    .logo__text {
+      font-weight: 800;
+      font-size: 15px;
+      letter-spacing: .06em;
+      line-height: 1.1
+    }
+
+    .logo__text small {
+      display: block;
+      font-weight: 500;
+      font-size: 11px;
+      letter-spacing: .02em;
+      color: #6B7178;
+      margin-top: 2px
+    }
+
+    .nav {
+      display: flex;
+      gap: 24px;
+      margin-left: 6px
+    }
+
+    .nav a {
+      font-size: 15px;
+      color: #4A5058;
+      font-weight: 500;
+      transition: .15s
+    }
+
+    .nav a:hover {
+      color: #FF6A00
+    }
+
+    .header__actions {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 16px
+    }
+
+    .login-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #4A5058;
+      white-space: nowrap;
+      transition: .15s;
+    }
+
+    .login-link:hover {
+      color: #FF6A00
+    }
+
+    .login-link svg {
+      flex-shrink: 0
+    }
+
+    .nav__login {
+      display: none
+    }
+
+    .phone {
+      font-weight: 700;
+      font-size: 15px;
+      white-space: nowrap;
+      transition: .15s
+    }
+
+    .phone:hover {
+      color: #FF6A00
+    }
+
+    .burger {
+      display: none;
+      width: 42px;
+      height: 42px;
+      border: 1px solid #DDE1E5;
+      background: #fff;
+      border-radius: 10px;
+      cursor: pointer;
+      padding: 0;
+      place-items: center;
+    }
+
+    .burger span {
+      display: block;
+      width: 18px;
+      height: 2px;
+      background: #1F2328;
+      border-radius: 2px;
+      position: relative
+    }
+
+    .burger span::before,
+    .burger span::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      width: 18px;
+      height: 2px;
+      background: #1F2328;
+      border-radius: 2px;
+    }
+
+    .burger span::before {
+      top: -6px
+    }
+
+    .burger span::after {
+      top: 6px
+    }
+
+    /* ---------- Buttons ---------- */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      height: 48px;
+      padding: 0 22px;
+      border-radius: 10px;
+      border: 1px solid transparent;
+      font-weight: 600;
+      font-size: 15px;
+      cursor: pointer;
+      transition: .18s;
+      white-space: nowrap;
+    }
+
+    .btn--primary {
+      background: #FF6A00;
+      color: #fff
+    }
+
+    .btn--primary:hover {
+      background: #E85F00
+    }
+
+    .btn--ghost {
+      background: #fff;
+      border-color: #DDE1E5;
+      color: #1F2328
+    }
+
+    .btn--ghost:hover {
+      border-color: #FF6A00;
+      color: #E85F00
+    }
+
+    .btn--sm {
+      height: 40px;
+      padding: 0 16px;
+      font-size: 14px;
+      border-radius: 9px
+    }
+
+    .btn:focus-visible,
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid rgba(255, 106, 0, .35);
+      outline-offset: 2px
+    }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      padding: 56px 0 8px
+    }
+
+    .hero__inner {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 48px;
+      align-items: start
+    }
+
+    .hero__inner>* {
+      min-width: 0
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #EAF7EF;
+      color: #1B7A45;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 7px 12px;
+      border-radius: 999px;
+    }
+
+    .badge::before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #1E9E5A
+    }
+
+    h1 {
+      font-size: clamp(30px, 4vw, 46px);
+      line-height: 1.08;
+      letter-spacing: -.02em;
+      margin: 18px 0 14px;
+      font-weight: 800;
+      text-wrap: balance
+    }
+
+    .lead {
+      font-size: 18px;
+      line-height: 1.5;
+      color: #5A6169;
+      margin: 0 0 22px;
+      max-width: 520px
+    }
+
+    .checks {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 28px;
+      display: grid;
+      gap: 12px
+    }
+
+    .checks li {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      font-size: 15px;
+      color: #2C3238
+    }
+
+    .checks svg {
+      flex-shrink: 0;
+      margin-top: 2px;
+      color: #FF6A00
+    }
+
+    .hero__actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap
+    }
+
+    /* ---------- Booking card ---------- */
+    .booking {
+      background: #fff;
+      border: 1px solid #E9ECEF;
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: 0 16px 48px rgba(31, 35, 40, .10);
+      scroll-margin-top: 96px;
+      min-width: 0;
+    }
+
+    .booking h2 {
+      font-size: 20px;
+      margin: 0 0 4px;
+      letter-spacing: -.01em
+    }
+
+    .booking__sub {
+      font-size: 14px;
+      color: #6B7178;
+      margin: 0 0 18px
+    }
+
+    .field {
+      margin-bottom: 14px;
+      min-width: 0
+    }
+
+    .field label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      color: #6B7178;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      margin-bottom: 6px;
+    }
+
+    .field select,
+    .field input,
+    .field textarea {
+      width: 100%;
+      height: 46px;
+      border: 1px solid #DDE1E5;
+      border-radius: 10px;
+      padding: 0 12px;
+      background: #fff;
+      color: #1F2328;
+      outline: none;
+      transition: .15s;
+    }
+
+    .field textarea {
+      height: 84px;
+      padding: 12px;
+      resize: vertical
+    }
+
+    .field select:focus,
+    .field input:focus,
+    .field textarea:focus {
+      border-color: #FF6A00;
+      box-shadow: 0 0 0 3px rgba(255, 106, 0, .12);
+    }
+
+    .dates {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(74px, 1fr));
+      gap: 8px;
+      width: 100%;
+      max-width: 100%
+    }
+
+    .date {
+      border: 1px solid #DDE1E5;
+      background: #fff;
+      border-radius: 10px;
+      padding: 8px 10px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      color: #4A5058;
+      line-height: 1.2;
+      text-align: center;
+      min-width: 0;
+      transition: .15s;
+    }
+
+    .date span {
+      display: block;
+      font-size: 11px;
+      font-weight: 500;
+      color: #8A9199;
+      margin-top: 2px
+    }
+
+    .date:hover {
+      border-color: #B9C0C7
+    }
+
+    .date.is-active {
+      background: #1F2328;
+      border-color: #1F2328;
+      color: #fff
+    }
+
+    .date.is-active span {
+      color: #C9CED4
+    }
+
+    .estimate {
+      background: #FFF4EC;
+      border-radius: 10px;
+      padding: 12px 14px;
+      margin: 16px 0;
+      font-size: 14px;
+      color: #8A3B00;
+      line-height: 1.4;
+    }
+
+    .estimate strong {
+      color: #1F2328
+    }
+
+    .estimate em {
+      display: block;
+      font-style: normal;
+      font-size: 12px;
+      color: #A05A1E;
+      margin-top: 4px
+    }
+
+    .booking .btn {
+      width: 100%
+    }
+
+    .booking__hint {
+      margin-top: 12px;
+      font-size: 13px;
+      color: #6B7178;
+      text-align: center
+    }
+
+    .booking__hint b {
+      color: #1F2328
+    }
+
+    .field--other {
+      display: none
+    }
+
+    .field--other.is-visible {
+      display: block
+    }
+
+    /* ---------- Trust bar ---------- */
+    .trustbar {
+      margin-top: 36px;
+      background: #fff;
+      border: 1px solid #E9ECEF;
+      border-radius: 16px;
+      padding: 16px 22px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 32px;
+      justify-content: space-between;
+      font-size: 14px;
+      color: #4A5058;
+    }
+
+    .trustbar b {
+      color: #1F2328
+    }
+
+    /* ---------- Sections ---------- */
+    .section {
+      padding: 64px 0
+    }
+
+    .section--alt {
+      background: #fff
+    }
+
+    .section__head {
+      max-width: 640px;
+      margin-bottom: 28px
+    }
+
+    .section__head h2 {
+      font-size: clamp(24px, 3vw, 32px);
+      margin: 0 0 8px;
+      letter-spacing: -.01em
+    }
+
+    .section__head p {
+      margin: 0;
+      color: #5A6169;
+      font-size: 16px;
+      line-height: 1.5
+    }
+
+    /* ---------- Categories ---------- */
+    .cats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 16px
+    }
+
+    .cat {
+      background: #fff;
+      border: 1px solid #E9ECEF;
+      border-radius: 16px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      transition: .18s;
+    }
+
+    .section--alt .cat {
+      background: #F9FAFB
+    }
+
+    .cat:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(31, 35, 40, .08);
+      border-color: #DDE1E5
+    }
+
+    .cat__icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: #F2F4F6;
+      display: grid;
+      place-items: center;
+      margin-bottom: 12px;
+      color: #FF6A00;
+    }
+
+    .cat h3 {
+      font-size: 17px;
+      margin: 0 0 6px
+    }
+
+    .cat p {
+      font-size: 14px;
+      color: #6B7178;
+      line-height: 1.45;
+      margin: 0 0 16px;
+      flex: 1
+    }
+
+    .cat__row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding-top: 14px;
+      border-top: 1px solid #F0F2F4;
+    }
+
+    .cat__price {
+      font-weight: 800;
+      font-size: 16px
+    }
+
+    .cat__price small {
+      display: block;
+      font-weight: 500;
+      font-size: 11px;
+      color: #8A9199;
+      margin-top: 2px
+    }
+
+    .link-btn {
+      background: none;
+      border: none;
+      color: #E85F00;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      padding: 8px 0;
+      transition: .15s;
+    }
+
+    .link-btn:hover {
+      color: #B94A00
+    }
+
+    .note {
+      margin: 20px 0 0;
+      font-size: 14px;
+      color: #6B7178
+    }
+
+    /* ---------- Steps ---------- */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px
+    }
+
+    .step {
+      background: #fff;
+      border: 1px solid #E9ECEF;
+      border-radius: 16px;
+      padding: 24px
+    }
+
+    .step__num {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: #FFF4EC;
+      color: #E85F00;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      font-size: 16px;
+      margin-bottom: 16px;
+    }
+
+    .step h3 {
+      font-size: 18px;
+      margin: 0 0 6px
+    }
+
+    .step p {
+      font-size: 15px;
+      color: #6B7178;
+      line-height: 1.5;
+      margin: 0
+    }
+
+    /* ---------- Masters ---------- */
+    .masters {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px
+    }
+
+    .master {
+      background: #fff;
+      border: 1px solid #E9ECEF;
+      border-radius: 16px;
+      padding: 24px;
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .master__avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 800;
+      font-size: 22px;
+      background: linear-gradient(135deg, #3A4048, #6B737C);
+    }
+
+    .master:nth-child(2) .master__avatar {
+      background: linear-gradient(135deg, #B34A00, #FF8A33)
+    }
+
+    .master:nth-child(3) .master__avatar {
+      background: linear-gradient(135deg, #1B7A45, #3FBF7F)
+    }
+
+    .master h3 {
+      font-size: 17px;
+      margin: 0 0 2px
+    }
+
+    .master__role {
+      font-size: 13px;
+      color: #6B7178;
+      margin: 0 0 8px
+    }
+
+    .master__slot {
+      font-size: 12px;
+      font-weight: 600;
+      color: #1B7A45;
+      display: flex;
+      align-items: center;
+      gap: 6px
+    }
+
+    .master__slot::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #1E9E5A
+    }
+
+    /* ---------- Reviews ---------- */
+    .reviews {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px
+    }
+
+    .review {
+      background: #fff;
+      border: 1px solid #E9ECEF;
+      border-radius: 16px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column
+    }
+
+    .review__stars {
+      color: #FF6A00;
+      font-size: 15px;
+      letter-spacing: 2px;
+      margin-bottom: 12px
+    }
+
+    .review__text {
+      font-size: 15px;
+      line-height: 1.55;
+      color: #2C3238;
+      margin: 0 0 18px;
+      flex: 1
+    }
+
+    .review__author {
+      font-size: 14px;
+      font-weight: 700;
+      margin: 0
+    }
+
+    .review__meta {
+      font-size: 12px;
+      color: #8A9199;
+      margin: 2px 0 0
+    }
+
+    /* ---------- About ---------- */
+    .about {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 40px;
+      align-items: center
+    }
+
+    .about h2 {
+      font-size: clamp(24px, 3vw, 32px);
+      margin: 0 0 14px;
+      letter-spacing: -.01em
+    }
+
+    .about p {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #4A5058;
+      margin: 0 0 14px
+    }
+
+    .about ul {
+      list-style: none;
+      padding: 0;
+      margin: 18px 0 0;
+      display: grid;
+      gap: 10px
+    }
+
+    .about li {
+      display: flex;
+      gap: 10px;
+      font-size: 15px;
+      color: #2C3238
+    }
+
+    .about li svg {
+      color: #FF6A00;
+      flex-shrink: 0;
+      margin-top: 2px
+    }
+
+    .photo {
+      background:
+        radial-gradient(120% 120% at 20% 0%, rgba(255, 106, 0, .22), transparent 55%),
+        linear-gradient(135deg, #2A2F36, #4A5159);
+      border-radius: 20px;
+      min-height: 340px;
+      display: grid;
+      place-items: center;
+      color: rgba(255, 255, 255, .55);
+      font-size: 14px;
+      letter-spacing: .04em;
+      text-align: center;
+    }
+
+    .photo span {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px
+    }
+
+    /* ---------- Contacts ---------- */
+    .contacts {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: start
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 18px;
+      margin-top: 24px
+    }
+
+    .contact-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start
+    }
+
+    .contact-item svg {
+      color: #FF6A00;
+      flex-shrink: 0;
+      margin-top: 2px
+    }
+
+    .contact-item b {
+      display: block;
+      font-size: 15px;
+      margin-bottom: 2px
+    }
+
+    .contact-item span {
+      font-size: 14px;
+      color: #6B7178;
+      line-height: 1.45
+    }
+
+    .map {
+      min-height: 340px;
+      border-radius: 20px;
+      border: 1px solid #E1E5E9;
+      background:
+        linear-gradient(#EDF0F2 1px, transparent 1px) 0 0/100% 40px,
+        linear-gradient(90deg, #EDF0F2 1px, transparent 1px) 0 0/40px 100%,
+        #F9FAFB;
+      display: grid;
+      place-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .map__pin {
+      width: 48px;
+      height: 48px;
+      border-radius: 50% 50% 50% 0;
+      background: #FF6A00;
+      transform: rotate(-45deg);
+      box-shadow: 0 10px 24px rgba(255, 106, 0, .35);
+      display: grid;
+      place-items: center;
+    }
+
+    .map__pin::after {
+      content: '';
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #fff
+    }
+
+    .map__label {
+      position: absolute;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #fff;
+      border: 1px solid #E1E5E9;
+      border-radius: 8px;
+      padding: 6px 12px;
+      font-size: 12px;
+      color: #6B7178;
+      white-space: nowrap;
+    }
+
+    /* ---------- Footer ---------- */
+    .footer {
+      background: #1F2328;
+      color: #A9B0B8;
+      padding: 48px 0 24px;
+      margin-top: 0
+    }
+
+    .footer__grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: 32px
+    }
+
+    .footer .logo__text {
+      color: #fff
+    }
+
+    .footer .logo__text small {
+      color: #8A9199
+    }
+
+    .footer p {
+      font-size: 14px;
+      line-height: 1.6;
+      margin: 14px 0 0;
+      max-width: 280px
+    }
+
+    .footer h4 {
+      color: #fff;
+      font-size: 13px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin: 0 0 14px
+    }
+
+    .footer ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 10px
+    }
+
+    .footer a {
+      font-size: 14px;
+      transition: .15s
+    }
+
+    .footer a:hover {
+      color: #FF6A00
+    }
+
+    .footer__bottom {
+      border-top: 1px solid #323840;
+      margin-top: 36px;
+      padding-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: space-between;
+      font-size: 13px;
+      color: #7C838C;
+    }
+
+    /* ---------- Mobile CTA ---------- */
+    .mobile-cta {
+      display: none;
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 60;
+      background: rgba(255, 255, 255, .96);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid #E9ECEF;
+      padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+    }
+
+    .mobile-cta .btn {
+      width: 100%
+    }
+
+    /* ---------- Modal ---------- */
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: rgba(15, 18, 21, .55);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal.is-open {
+      display: flex
+    }
+
+    .modal__card {
+      background: #fff;
+      border-radius: 20px;
+      max-width: 440px;
+      width: 100%;
+      padding: 28px;
+      box-shadow: 0 24px 64px rgba(0, 0, 0, .25);
+    }
+
+    .modal__icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: #EAF7EF;
+      color: #1E9E5A;
+      display: grid;
+      place-items: center;
+      margin-bottom: 16px;
+    }
+
+    .modal h3 {
+      font-size: 22px;
+      margin: 0 0 6px
+    }
+
+    .modal__sub {
+      font-size: 14px;
+      color: #6B7178;
+      margin: 0 0 20px;
+      line-height: 1.45
+    }
+
+    .summary {
+      border: 1px solid #E9ECEF;
+      border-radius: 12px;
+      padding: 16px;
+      display: grid;
+      gap: 10px;
+      margin-bottom: 20px
+    }
+
+    .summary__row {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      font-size: 14px
+    }
+
+    .summary__row span {
+      color: #6B7178
+    }
+
+    .summary__row b {
+      text-align: right
+    }
+
+    .summary__total {
+      border-top: 1px solid #E9ECEF;
+      padding-top: 10px;
+      font-size: 15px
+    }
+
+    .modal .btn {
+      width: 100%
+    }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width:1100px) {
+      .header__inner {
+        gap: 16px
+      }
+
+      .nav {
+        gap: 16px;
+        margin-left: 0
+      }
+
+      .nav a {
+        font-size: 14px;
+        white-space: nowrap
+      }
+
+      .header__actions {
+        gap: 12px
+      }
+    }
+
+    @media (max-width:980px) {
+      .nav {
+        position: absolute;
+        top: 72px;
+        left: 0;
+        right: 0;
+        background: #fff;
+        border-bottom: 1px solid #E9ECEF;
+        flex-direction: column;
+        gap: 0;
+        padding: 8px 20px 16px;
+        display: none;
+        box-shadow: 0 16px 24px rgba(31, 35, 40, .06);
+      }
+
+      .nav.is-open {
+        display: flex
+      }
+
+      .nav__login {
+        display: block;
+        color: #E85F00;
+        font-weight: 700
+      }
+
+      .nav a {
+        padding: 12px 0;
+        border-bottom: 1px solid #F0F2F4;
+        font-size: 16px
+      }
+
+      .nav a:last-child {
+        border-bottom: none
+      }
+
+      .burger {
+        display: grid
+      }
+
+      .hero__inner {
+        grid-template-columns: 1fr;
+        gap: 32px
+      }
+
+      .about {
+        grid-template-columns: 1fr
+      }
+
+      .contacts {
+        grid-template-columns: 1fr
+      }
+
+      .footer__grid {
+        grid-template-columns: 1fr 1fr
+      }
+    }
+
+    @media (max-width:720px) {
+      .header__inner {
+        height: 64px;
+        gap: 12px
+      }
+
+      .phone {
+        display: none
+      }
+
+      .nav {
+        top: 64px
+      }
+
+      .header__actions .btn {
+        display: none
+      }
+
+      .hero {
+        padding: 36px 0 4px
+      }
+
+      .section {
+        padding: 48px 0
+      }
+
+      .lead {
+        font-size: 16px
+      }
+
+      .trustbar {
+        gap: 10px 20px;
+        font-size: 13px;
+        padding: 14px 16px
+      }
+
+      .mobile-cta {
+        display: block
+      }
+
+      body {
+        padding-bottom: 76px
+      }
+
+      .footer__grid {
+        grid-template-columns: 1fr
+      }
+
+      .photo {
+        min-height: 240px
+      }
+
+      .map {
+        min-height: 260px
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ================= HEADER ================= -->
+  <header class="header">
+    <div class="container header__inner">
+      <a class="logo" href="#" id="ALogo" data-name="ALogo">
+        <span class="logo__mark">Ш</span>
+        <span class="logo__text">ШИНОМОНТАЖ<small>Зажопинск</small></span>
+      </a>
+
+      <nav class="nav" id="nav">
+        <a href="#services" id="ANavServices" data-name="ANavServices">Услуги</a>
+        <a href="#how" id="ANavHow" data-name="ANavHow">Как это работает</a>
+        <a href="#masters" id="ANavMasters" data-name="ANavMasters">Мастера</a>
+        <a href="#reviews" id="ANavReviews" data-name="ANavReviews">Отзывы</a>
+        <a href="#contacts" id="ANavContacts" data-name="ANavContacts">Контакты</a>
+        <a class="nav__login" href="login.html" id="ANavLogin" data-name="ANavLogin">Войти в кабинет</a>
+      </nav>
+
+      <div class="header__actions">
+        <a class="login-link" href="login.html" id="ALogin" data-name="ALogin">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+            <circle cx="12" cy="7" r="4" />
+          </svg>
+          Войти
+        </a>
+        <a class="phone" href="tel:+70000000000" id="AHeaderPhone" data-name="AHeaderPhone">+7 (777) 777-77-77</a>
+        <a class="btn btn--primary btn--sm" href="booking.html" id="BHeaderBook" data-name="BHeaderBook">Записаться</a>
+        <button class="burger" id="BBurger" aria-label="Открыть меню" aria-expanded="false" data-name="BBurger">
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ================= HERO ================= -->
+    <section class="hero">
+      <div class="container hero__inner">
+        <div class="hero__text">
+          <div class="badge" id="LWorkBadge" data-name="LWorkBadge">Сегодня работаем до потери сознания</div>
+          <h1 id="LHeroTitle" data-name="LHeroTitle">Шиномонтаж в Зажопинске — запись онлайн за 1 минуту</h1>
+          <p class="lead" id="LHeroLead" data-name="LHeroLead">Выберите, что нужно сделать, и свободное время. Без
+            звонков и очередей.</p>
+
+          <ul class="checks" id="LBenefits" data-name="LBenefits">
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 6 9 17l-5-5" />
+              </svg>
+              Свободные окна в реальном времени
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 6 9 17l-5-5" />
+              </svg>
+              Предварительную стоимость видно сразу
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 6 9 17l-5-5" />
+              </svg>
+              Бесплатная отмена за 24 часа
+            </li>
+          </ul>
+
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="booking.html" id="BHeroBook" data-name="BHeroBook">Записаться онлайн</a>
+            <a class="btn btn--ghost" href="tel:+70000000000" id="BHeroCall" data-name="BHeroCall">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2.1L8 9.7a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.7 2Z" />
+              </svg>
+              Позвонить
+            </a>
+          </div>
+        </div>
+
+        <!-- Booking card -->
+        <div class="booking" id="booking">
+          <h2 id="LBookingTitle" data-name="LBookingTitle">Записаться сейчас</h2>
+          <p class="booking__sub" id="LBookingSub" data-name="LBookingSub">Свободные окна на 7 дней вперёд</p>
+
+          <form id="bookingForm" novalidate>
+            <div class="field">
+              <label for="SService">Что нужно сделать?</label>
+              <select id="SService" required name="SService" data-name="SService">
+                <option value="">Выберите услугу</option>
+                <option value="tire">Смена шин — от 1 500 ₽</option>
+                <option value="balance">Балансировка колёс — от 600 ₽</option>
+                <option value="align">Развал-схождение — от 1 200 ₽</option>
+                <option value="oil">Замена масла — от 800 ₽</option>
+                <option value="diag">Диагностика — от 1 000 ₽</option>
+                <option value="repair">Мелкий ремонт — от 700 ₽</option>
+                <option value="electric">Электрика — от 900 ₽</option>
+                <option value="inspection">Техосмотр — от 1 500 ₽</option>
+                <option value="other">Другое — опишу проблему</option>
+              </select>
+            </div>
+
+            <div class="field field--other" id="otherField">
+              <label for="TProblem">Опишите проблему</label>
+              <textarea id="TProblem" placeholder="Например: стучит справа при повороте" name="TProblem"
+                data-name="TProblem"></textarea>
+            </div>
+
+            <div class="field">
+              <label>Когда удобно?</label>
+              <div class="dates" id="dates" data-name="BDay1–BDay7"></div>
+            </div>
+
+            <div class="field">
+              <label for="STime">Время</label>
+              <select id="STime" required name="STime" data-name="STime">
+                <option value="">Выберите время</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="TPhone">Телефон</label>
+              <input id="TPhone" type="tel" placeholder="+7 (___) ___-__-__" required name="TPhone" data-name="TPhone">
+            </div>
+
+            <div class="estimate" id="LEstimate" data-name="LEstimate">
+              Выберите услугу, чтобы увидеть стоимость
+            </div>
+
+            <button class="btn btn--primary" type="submit" id="BSubmitIndex"
+              data-name="BSubmitIndex">Записаться</button>
+          </form>
+
+          <div class="booking__hint" id="LNearestSlot" data-name="LNearestSlot">Ближайшее окно: <b>сегодня, 15:00</b>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="trustbar">
+          <div>Работаем с <b>2006 года</b></div>
+          <div><b>7</b> на 2ГИС</div>
+          <div>Гарантия на работы <b> пока не сдохнет</b></div>
+          <div>Документы все имеются</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SERVICES ================= -->
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section__head">
+          <h2 id="LServicesTitle" data-name="LServicesTitle">Услуги</h2>
+          <p>Выберите, что нужно сделать. Стоимость предварительная — точную цену мастер назовёт после осмотра, до
+            начала работ.</p>
+        </div>
+
+        <div class="cats">
+          <article class="cat">
+            <div class="cat__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.8" stroke-linecap="round">
+                <circle cx="12" cy="12" r="9" />
+                <circle cx="12" cy="12" r="3.5" />
+                <path d="M12 3v2M12 19v2M3 12h2M19 12h2" />
+              </svg></div>
+            <h3>Смена шин</h3>
+            <p>Снятие, установка и замена колёс, сезонная переобувка.</p>
+            <div class="cat__row">
+              <div class="cat__price">от 1 500 ₽<small>около 1 часа</small></div>
+              <button class="link-btn" data-cat="tire" id="BChooseTire" data-name="BChooseTire">Выбрать</button>
+            </div>
+          </article>
+
+          <article class="cat">
+            <div class="cat__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.8" stroke-linecap="round">
+                <circle cx="12" cy="12" r="8" />
+                <circle cx="12" cy="12" r="2.5" />
+                <path d="M12 4v3M12 17v3M4 12h3M17 12h3" />
+              </svg></div>
+            <h3>Балансировка колёс</h3>
+            <p>Точная балансировка на стенде, без вибрации на скорости.</p>
+            <div class="cat__row">
+              <div class="cat__price">от 600 ₽<small>около 30 минут</small></div>
+              <button class="link-btn" data-cat="balance" id="BChooseBalance"
+                data-name="BChooseBalance">Выбрать</button>
+            </div>
+          </article>
+
+          <article class="cat">
+            <div class="cat__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 12h16M4 12l3-3M4 12l3 3M20 12l-3-3M20 12l-3 3" />
+              </svg></div>
+            <h3>Развал-схождение</h3>
+            <p>Регулировка углов установки колёс, чтобы машину не вело.</p>
+            <div class="cat__row">
+              <div class="cat__price">от 1 200 ₽<small>около 1 часа</small></div>
+              <button class="link-btn" data-cat="align" id="BChooseAlign" data-name="BChooseAlign">Выбрать</button>
+            </div>
+          </article>
+
+          <article class="cat">
+            <div class="cat__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3s6 6.5 6 10a6 6 0 0 1-12 0c0-3.5 6-10 6-10z" />
+              </svg></div>
+            <h3>Замена масла</h3>
+            <p>Масло и фильтр, отработанное масло утилизируем.</p>
+            <div class="cat__row">
+              <div class="cat__price">от 800 ₽<small>около 30 минут</small></div>
+              <button class="link-btn" data-cat="oil" id="BChooseOil" data-name="BChooseOil">Выбрать</button>
+            </div>
+          </article>
+
+          <article class="cat">
+            <div class="cat__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 12h4l2-5 4 10 2-5h6" />
+              </svg></div>
+            <h3>Диагностика</h3>
+            <p>Проверка ходовой, двигателя и электроники.</p>
+            <div class="cat__row">
+              <div class="cat__price">от 1 000 ₽<small>около 1 часа</small></div>
+              <button class="link-btn" data-cat="diag" id="BChooseDiag" data-name="BChooseDiag">Выбрать</button>
+            </div>
+          </article>
+
+          <article class="cat">
+            <div class="cat__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L4 17v3h3l5.3-5.3a4 4 0 0 0 5.4-5.4l-2.3 2.3-2-2 2.3-2.3z" />
+              </svg></div>
+            <h3>Мелкий ремонт</h3>
+            <p>Тормоза, подвеска, расходники и другие работы.</p>
+            <div class="cat__row">
+              <div class="cat__price">от 700 ₽<small>около 1 часа</small></div>
+              <button class="link-btn" data-cat="repair" id="BChooseRepair" data-name="BChooseRepair">Выбрать</button>
+            </div>
+          </article>
+
+          <article class="cat">
+            <div class="cat__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z" />
+              </svg></div>
+            <h3>Электрика</h3>
+            <p>Стартер, генератор, проводка, лампы и датчики.</p>
+            <div class="cat__row">
+              <div class="cat__price">от 900 ₽<small>около 1 часа</small></div>
+              <button class="link-btn" data-cat="electric" id="BChooseElectric"
+                data-name="BChooseElectric">Выбрать</button>
+            </div>
+          </article>
+
+          <article class="cat">
+            <div class="cat__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z" />
+                <path d="M9 12l2 2 4-4" />
+              </svg></div>
+            <h3>Техосмотр</h3>
+            <p>Подготовка и проведение технического осмотра.</p>
+            <div class="cat__row">
+              <div class="cat__price">от 1 500 ₽<small>около 1 часа</small></div>
+              <button class="link-btn" data-cat="inspection" id="BChooseInspection"
+                data-name="BChooseInspection">Выбрать</button>
+            </div>
+          </article>
+
+          <article class="cat">
+            <div class="cat__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="9" />
+                <path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1 .9-1 1.7" />
+                <circle cx="12" cy="17" r=".6" fill="currentColor" />
+              </svg></div>
+            <h3>Другое</h3>
+            <p>Не нашли нужное? Опишите проблему — мастер разберётся.</p>
+            <div class="cat__row">
+              <div class="cat__price">по осмотру<small>мастер назовёт цену</small></div>
+              <button class="link-btn" data-cat="other" id="BChooseOther" data-name="BChooseOther">Выбрать</button>
+            </div>
+          </article>
+        </div>
+
+        <p class="note" id="LPriceNote" data-name="LPriceNote">Стоимость предварительная. Точную цену мастер назовёт
+          после осмотра — до начала работ.</p>
+      </div>
+    </section>
+
+    <!-- ================= HOW ================= -->
+    <section class="section section--alt" id="how">
+      <div class="container">
+        <div class="section__head">
+          <h2 id="LHowTitle" data-name="LHowTitle">Как это работает</h2>
+          <p id="LHowSub" data-name="LHowSub">Три шага — и машина в очереди. Без звонков и переписок.</p>
+        </div>
+
+        <div class="steps" id="LHowSteps" data-name="LHowSteps">
+          <div class="step">
+            <div class="step__num">01</div>
+            <h3>Выберите услугу и время</h3>
+            <p>Отметьте, что нужно сделать, и свободный час в ближайшие 7 дней.</p>
+          </div>
+          <div class="step">
+            <div class="step__num">02</div>
+            <h3>Приезжайте к назначенному времени</h3>
+            <p>Мастер осмотрит машину и назовёт точную стоимость и время готовности.</p>
+          </div>
+          <div class="step">
+            <div class="step__num">03</div>
+            <h3>Оплатите после работы</h3>
+            <p>Наличными, картой или онлайн. Документы придут на email и в личный кабинет.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= MASTERS ================= -->
+    <section class="section" id="masters">
+      <div class="container">
+        <div class="section__head">
+          <h2 id="LMastersTitle" data-name="LMastersTitle">Мастера</h2>
+          <p id="LMastersSub" data-name="LMastersSub">Работают в сервисе не первый год. Можно выбрать конкретного
+            мастера при записи.</p>
+        </div>
+        
+        <div class="masters">
+          <article class="master" id="LMaster1" data-name="LMaster1">
+            <div class="master__avatar">К</div>
+            <div>
+              <h3>Клод</h3>
+              <p class="master__role">Шиномонтаж · кол-во контекста</p>
+              <div class="master__slot">Ближайшее окно: завтра, 10:00</div>
+            </div>
+          </article>
+
+          <article class="master" id="LMaster2" data-name="LMaster2">
+            <div class="master__avatar">Д</div>
+            <div>
+              <h3>Дипсик</h3>
+              <p class="master__role">Диагностика и электрика · сколько Си Цзиньпинь разрешит</p>
+              <div class="master__slot">Ближайшее окно: сегодня, 15:00</div>
+            </div>
+          </article>
+
+          <article class="master" id="LMaster3" data-name="LMaster3">
+            <div class="master__avatar">Ч</div>
+            <div>
+              <h3>ЧатГПТ</h3>
+              <p class="master__role">Ремонт и ТО · только посмотрит и всё отдаст клоду</p>
+              <div class="master__slot">Ближайшее окно: завтра, 12:00</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= REVIEWS ================= -->
+    <section class="section section--alt" id="reviews">
+      <div class="container">
+        <div class="section__head">
+          <h2 id="LReviewsTitle" data-name="LReviewsTitle">Отзывы</h2>
+          <p id="LReviewsSub" data-name="LReviewsSub">Что говорят клиенты после визита.</p>
+        </div>
+
+        <div class="reviews">
+          <article class="review" id="LReview1" data-name="LReview1">
+            <div class="review__stars">★★★★★</div>
+            <p class="review__text">«Клод бесплатный нашла, так что всё зажипись».</p>
+            <p class="review__author">Ирина</p>
+            <p class="review__meta">12 октября · Lada Granta</p>
+          </article>
+
+          <article class="review" id="LReview2" data-name="LReview2">
+            <div class="review__stars">★</div>
+            <p class="review__text">«Клод бесплатный только в мышеловке, поэтому пришлось нейрослопиться за 20 баксов(».</p>
+            <p class="review__author">Павел</p>
+            <p class="review__meta">3 октября · Renault Logan</p>
+          </article>
+
+          <article class="review" id="LReview3" data-name="LReview3">
+            <div class="review__stars">★★★★★</div>
+            <p class="review__text">«Кто нибудь сказал Ирине, что там под капотом не Клод, а Гигачат наш?».</p>
+            <p class="review__author">Наталья</p>
+            <p class="review__meta">21 сентября · Kia Rio</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= ABOUT ================= -->
+    <section class="section" id="about">
+      <div class="container about">
+        <div>
+          <h2 id="LAboutTitle" data-name="LAboutTitle">О сервисе</h2>
+          <p id="LAboutText" data-name="LAboutText">Небольшой автосервис в Зажопинске. Работаем до н.э.: шиномонтаж,
+            замена масла, диагностика, мелкий ремонт и электрика.</p>
+          <p>Два подъёмника, балансировочный стенд и диагностическое оборудование. Не навязываем лишнего: сначала
+            показываем проблему, потом называем цену.</p>
+          <ul id="LAboutFeatures" data-name="LAboutFeatures">
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 6 9 17l-5-5" />
+              </svg>
+              Гарантия на работы 6 месяцев
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 6 9 17l-5-5" />
+              </svg>
+              Цена известна до начала работ
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 6 9 17l-5-5" />
+              </svg>
+              Документы на руки и в личный кабинет
+            </li>
+          </ul>
+        </div>
+
+        <div class="photo" id="LAboutPhoto" data-name="LAboutPhoto">
+          <span>
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 16h14M6 16l1.5-5h9L18 16M7 16v2M17 16v2M4 12h2M18 12h2" />
+              <circle cx="8" cy="16" r="1" />
+              <circle cx="16" cy="16" r="1" />
+            </svg>
+            Фото сервиса
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CONTACTS ================= -->
+    <section class="section section--alt" id="contacts">
+      <div class="container contacts">
+        <div>
+          <div class="section__head" style="margin-bottom:0">
+            <h2 id="LContactsTitle" data-name="LContactsTitle">Контакты</h2>
+            <p>Приезжайте или звоните — поможем разобраться.</p>
+          </div>
+
+          <div class="contact-list">
+            <div class="contact-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              <div><b>Адрес</b><span>Зажопинск</span></div>
+            </div>
+            <div class="contact-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="9" />
+                <path d="M12 7v5l3 2" />
+              </svg>
+              <div><b>Режим работы</b><span>Пн–Сб 09:00–18:00 · Вс — выходной</span></div>
+            </div>
+            <div class="contact-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2.1L8 9.7a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.7 2Z" />
+              </svg>
+              <div><b>Телефон</b><span><a href="tel:+70000000000" id="AContactPhone" data-name="AContactPhone">+7 (777)
+                    777-77-77</a></span></div>
+            </div>
+            <div class="contact-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="5" width="18" height="14" rx="2" />
+                <path d="m3 7 9 6 9-6" />
+              </svg>
+              <div><b>Email</b><span>info@цыганы.ru</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="map" id="LMap" data-name="LMap">
+          <div class="map__pin"></div>
+          <div class="map__label">Зажопинск</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <a class="logo" href="#" id="AFooterLogo" data-name="AFooterLogo">
+            <span class="logo__mark">Ш</span>
+            <span class="logo__text">ШИНОМОНТАЖ<small>Зажопинск</small></span>
+          </a>
+          <p>Шиномонтаж, замена масла, диагностика и мелкий ремонт. Запись онлайн — без звонков и очередей.</p>
+        </div>
+
+        <div>
+          <h4>Разделы</h4>
+          <ul>
+            <li><a href="#services" id="AFooterServices" data-name="AFooterServices">Услуги</a></li>
+            <li><a href="#masters" id="AFooterMasters" data-name="AFooterMasters">Мастера</a></li>
+            <li><a href="#reviews" id="AFooterReviews" data-name="AFooterReviews">Отзывы</a></li>
+            <li><a href="#contacts" id="AFooterContacts" data-name="AFooterContacts">Контакты</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Контакты</h4>
+          <ul>
+            <li><a href="tel:+70000000000" id="AFooterPhone" data-name="AFooterPhone">+7 (777) 777-77-77</a></li>
+            <li><a href="mailto:info@shinomontazh-zarechye.ru" id="AFooterEmail"
+                data-name="AFooterEmail">info@цыгани.ru</a></li>
+            <li>Зажопинск</li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Режим работы</h4>
+          <ul>
+            <li>Пн–Сб: 09:00–18:00</li>
+            <li>Вс: по бутылочку перекинем, и с понедельника работаем</li>
+            <li><a href="cabinet-client.html" id="AFooterCabinet" data-name="AFooterCabinet">Личный кабинет</a></li>
+            <li><a href="login.html" id="AFooterStaffLogin" data-name="AFooterStaffLogin">Вход для сотрудников</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <span>© 2026 ИС «Всё или ничего».</span>
+        <span><a href="#" id="APrivacy" data-name="APrivacy">Политика конфиденциальности</a> · <a href="#" id="AOffer"
+            data-name="AOffer">Оферта</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile CTA -->
+  <div class="mobile-cta">
+    <a class="btn btn--primary" href="booking.html" id="BMobileBook" data-name="BMobileBook">Записаться онлайн</a>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal" id="MBookingSuccess" role="dialog" aria-modal="true" aria-labelledby="LModalTitle"
+    data-name="MBookingSuccess">
+    <div class="modal__card">
+      <div class="modal__icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 6 9 17l-5-5" />
+        </svg>
+      </div>
+      <h3 id="LModalTitle" data-name="LModalTitle">Заявка создана</h3>
+      <p class="modal__sub" id="LModalText" data-name="LModalText">Мы позвоним для подтверждения. Точную стоимость
+        мастер назовёт после осмотра, до начала работ.</p>
+
+      <div class="summary">
+        <div class="summary__row"><span>Номер</span><b id="mNum">№ 1042</b></div>
+        <div class="summary__row"><span>Услуга</span><b id="mService">Смена шин</b></div>
+        <div class="summary__row"><span>Когда</span><b id="mWhen">Сегодня, 15:00</b></div>
+        <div class="summary__row summary__total"><span>Предварительно</span><b id="mPrice">1 500 ₽</b></div>
+      </div>
+
+      <button class="btn btn--primary" id="BModalClose" type="button" data-name="BModalClose">Понятно</button>
+    </div>
+  </div>
+
+  <script>
+    /* ---------- Данные категорий ---------- */
+    const CATS = {
+      tire: { label: 'Смена шин', price: 1500, min: 60 },
+      balance: { label: 'Балансировка', price: 600, min: 30 },
+      align: { label: 'Развал-схождение', price: 1200, min: 60 },
+      oil: { label: 'Замена масла', price: 800, min: 30 },
+      diag: { label: 'Диагностика', price: 1000, min: 60 },
+      repair: { label: 'Мелкий ремонт', price: 700, min: 60 },
+      electric: { label: 'Электрика', price: 900, min: 60 },
+      inspection: { label: 'Техосмотр', price: 1500, min: 60 },
+      other: { label: 'Другое', price: null, min: null }
+    };
+
+    const serviceSelect = document.getElementById('SService');
+    const otherField = document.getElementById('otherField');
+    const problemInput = document.getElementById('TProblem');
+    const datesBox = document.getElementById('dates');
+    const timeSelect = document.getElementById('STime');
+    const estimateBox = document.getElementById('LEstimate');
+    const form = document.getElementById('bookingForm');
+    const phoneInput = document.getElementById('TPhone');
+
+    /* ---------- Телефон: +7 при фокусе ---------- */
+    function setupPhonePrefix(input) {
+      if (!input) return;
+
+      input.addEventListener('focus', () => {
+        if (input.value.trim()) return;
+
+        input.value = '+7 ';
+        const end = input.value.length;
+
+        setTimeout(() => {
+          if (document.activeElement === input) input.setSelectionRange(end, end);
+        }, 0);
+      });
+
+      input.addEventListener('blur', () => {
+        if (input.value.trim() === '+7') input.value = '';
+      });
+    }
+
+    /* ---------- Даты: 7 дней ---------- */
+    const MONTHS = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
+    const WEEKDAYS = ['вс', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'];
+    let selectedDate = null;
+
+    function buildDates() {
+      const today = new Date();
+      for (let i = 0; i < 7; i++) {
+        const d = new Date(today);
+        d.setDate(today.getDate() + i);
+
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'date';
+        btn.id = 'BDay' + (i + 1);
+        btn.dataset.name = 'BDay' + (i + 1);
+        btn.dataset.date = d.toISOString().slice(0, 10);
+
+        let top = '';
+        if (i === 0) top = 'Сегодня';
+        else if (i === 1) top = 'Завтра';
+        else top = WEEKDAYS[d.getDay()] + ', ' + d.getDate();
+
+        btn.innerHTML = top + '<span>' + MONTHS[d.getMonth()] + '</span>';
+        btn.addEventListener('click', () => selectDate(btn));
+        datesBox.appendChild(btn);
+      }
+
+      const first = datesBox.querySelector('.date');
+      if (first) {
+        selectDate(first);
+        if (timeSelect.options.length === 1) {
+          const second = datesBox.querySelectorAll('.date')[1];
+          if (second) selectDate(second);
+        }
+      }
+    }
+
+    function selectDate(btn) {
+      document.querySelectorAll('.date').forEach(b => b.classList.remove('is-active'));
+      btn.classList.add('is-active');
+      selectedDate = btn.dataset.date;
+      buildTimes();
+    }
+
+    /* ---------- Время: часы 09:00–17:00 ---------- */
+    function buildTimes() {
+      timeSelect.innerHTML = '<option value="">Выберите время</option>';
+
+      const today = new Date();
+      const isToday = selectedDate === today.toISOString().slice(0, 10);
+      const currentHour = today.getHours();
+
+      for (let h = 9; h <= 17; h++) {
+        if (isToday && h <= currentHour) continue;
+
+        const start = String(h).padStart(2, '0') + ':00';
+        const end = String(h + 1).padStart(2, '0') + ':00';
+
+        const opt = document.createElement('option');
+        opt.value = start;
+        opt.textContent = start + '–' + end;
+        timeSelect.appendChild(opt);
+      }
+
+      if (timeSelect.options.length === 1) {
+        timeSelect.options[0].textContent = 'На этот день свободных окон нет';
+      }
+    }
+
+    /* ---------- Стоимость ---------- */
+    function formatDuration(min) {
+      if (!min) return '';
+      if (min < 60) return min + ' минут';
+      const hours = min / 60;
+      if (hours === 1) return 'около 1 часа';
+      if (hours === 1.5) return 'около 1,5 часов';
+      return 'около ' + hours + ' часов';
+    }
+
+    function formatPrice(value) {
+      return value.toLocaleString('ru-RU') + ' ₽';
+    }
+
+    function updateEstimate() {
+      const key = serviceSelect.value;
+      const cat = CATS[key];
+
+      if (!key) {
+        estimateBox.innerHTML = 'Выберите услугу, чтобы увидеть стоимость';
+        return;
+      }
+
+      if (!cat.price) {
+        estimateBox.innerHTML = '<strong>Стоимость определит мастер</strong> после осмотра<em>Опишите проблему — мастер посмотрит машину и назовёт цену.</em>';
+        return;
+      }
+
+      estimateBox.innerHTML =
+        'Предварительно: <strong>' + formatPrice(cat.price) + '</strong> · ' + formatDuration(cat.min) +
+        '<em>Точную цену мастер назовёт после осмотра, до начала работ.</em>';
+    }
+
+    serviceSelect.addEventListener('change', () => {
+      const isOther = serviceSelect.value === 'other';
+      otherField.classList.toggle('is-visible', isOther);
+      if (isOther) problemInput.focus();
+      updateEstimate();
+    });
+
+    /* ---------- Карточки услуг ---------- */
+    document.querySelectorAll('[data-cat]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        window.location.href = 'booking.html?service=' + btn.dataset.cat;
+      });
+    });
+
+    /* ---------- Модальное окно ---------- */
+    const modal = document.getElementById('MBookingSuccess');
+    const modalClose = document.getElementById('BModalClose');
+
+    function openModal() {
+      modal.classList.add('is-open');
+      document.body.classList.add('locked');
+      modalClose.focus();
+    }
+
+    function closeModal() {
+      modal.classList.remove('is-open');
+      document.body.classList.remove('locked');
+    }
+
+    modalClose.addEventListener('click', closeModal);
+    modal.addEventListener('click', e => {
+      if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+    });
+
+    /* ---------- Отправка ---------- */
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+
+      const key = serviceSelect.value;
+      const time = timeSelect.value;
+
+      if (!key) {
+        serviceSelect.focus();
+        serviceSelect.style.borderColor = '#D64545';
+        return;
+      }
+      serviceSelect.style.borderColor = '';
+
+      if (!time) {
+        timeSelect.focus();
+        timeSelect.style.borderColor = '#D64545';
+        return;
+      }
+      timeSelect.style.borderColor = '';
+
+      const phoneDigits = phoneInput.value.replace(/\D/g, '');
+      if (phoneDigits.length < 2) {
+        phoneInput.focus();
+        phoneInput.style.borderColor = '#D64545';
+        return;
+      }
+      phoneInput.style.borderColor = '';
+
+      const cat = CATS[key];
+      const dateBtn = document.querySelector('.date.is-active');
+      const dateLabel = dateBtn ? dateBtn.childNodes[0].textContent.trim() : '';
+
+      document.getElementById('mNum').textContent = '№ ' + (1000 + Math.floor(Math.random() * 900));
+      document.getElementById('mService').textContent = cat.label;
+      document.getElementById('mWhen').textContent = dateLabel + ', ' + time;
+      document.getElementById('mPrice').textContent = cat.price ? formatPrice(cat.price) : 'по осмотру';
+
+      openModal();
+    });
+
+    /* ---------- Мобильное меню ---------- */
+    const burger = document.getElementById('BBurger');
+    const nav = document.getElementById('nav');
+
+    burger.addEventListener('click', () => {
+      const isOpen = nav.classList.toggle('is-open');
+      burger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    nav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('is-open');
+        burger.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    /* ---------- Ближайшее окно ---------- */
+    function updateNearest() {
+      const now = new Date();
+      const h = now.getHours();
+      let day, time;
+
+      if (h < 17) {
+        day = 'сегодня';
+        time = String(Math.max(9, h + 1)).padStart(2, '0') + ':00';
+      } else {
+        day = 'завтра';
+        time = '09:00';
+      }
+
+      const el = document.getElementById('LNearestSlot');
+      if (el) el.innerHTML = 'Ближайшее окно: <b>' + day + ', ' + time + '</b>';
+
+      const badge = document.getElementById('LWorkBadge');
+      if (badge) {
+        badge.textContent = h < 18 ? 'Сегодня работаем до 18:00' : 'Завтра работаем с 09:00';
+      }
+    }
+
+    /* ---------- Старт ---------- */
+    setupPhonePrefix(phoneInput);
+    buildDates();
+    updateEstimate();
+    updateNearest();
+  </script>
+</body>
+
+</html>

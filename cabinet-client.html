@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Личный кабинет — Шиномонтаж в Зажопинске</title>
+<style>
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;font-family:'Inter','Segoe UI',system-ui,-apple-system,sans-serif;
+    background:#F6F7F8;color:#1F2328;-webkit-font-smoothing:antialiased;
+  }
+  body.locked{overflow:hidden}
+  a{color:inherit;text-decoration:none}
+  button,input,select,textarea{font:inherit}
+  svg{display:block}
+  .container{max-width:1040px;margin:0 auto;padding:0 20px}
+
+  /* Header */
+  .header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border-bottom:1px solid #E9ECEF}
+  .header__inner{display:flex;align-items:center;gap:20px;height:72px}
+  .logo{display:flex;align-items:center;gap:10px;flex-shrink:0}
+  .logo__mark{width:38px;height:38px;border-radius:10px;background:#FF6A00;color:#fff;display:grid;place-items:center;font-weight:800;font-size:18px}
+  .logo__text{font-weight:800;font-size:15px;letter-spacing:.06em;line-height:1.1}
+  .logo__text small{display:block;font-weight:500;font-size:11px;letter-spacing:.02em;color:#6B7178;margin-top:2px}
+  .header__right{margin-left:auto;display:flex;align-items:center;gap:14px}
+
+  .bell-wrap{position:relative}
+  .bell{width:40px;height:40px;border-radius:10px;border:1px solid #E9ECEF;background:#fff;display:grid;place-items:center;cursor:pointer;position:relative;transition:.15s}
+  .bell:hover{border-color:#FF6A00;color:#E85F00}
+  .bell__dot{position:absolute;top:9px;right:9px;width:7px;height:7px;border-radius:50%;background:#FF6A00}
+  .notif{
+    position:absolute;top:50px;right:0;width:310px;background:#fff;border:1px solid #E9ECEF;
+    border-radius:14px;box-shadow:0 18px 44px rgba(31,35,40,.14);padding:8px;display:none;z-index:80;
+  }
+  .notif.is-open{display:block}
+  .notif__head{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#8A9199;padding:8px 10px}
+  .notif__item{padding:10px;border-radius:8px;display:flex;gap:10px;align-items:flex-start;font-size:13px;line-height:1.4}
+  .notif__item:hover{background:#F6F7F8}
+  .notif__item i{width:8px;height:8px;border-radius:50%;background:#FF6A00;flex-shrink:0;margin-top:5px}
+  .notif__item span{display:block;color:#8A9199;font-size:12px;margin-top:2px}
+
+  .user{display:flex;align-items:center;gap:10px}
+  .avatar{width:38px;height:38px;border-radius:50%;background:#FFF4EC;color:#E85F00;display:grid;place-items:center;font-weight:800;font-size:15px}
+  .user__name{font-size:14px;font-weight:600;line-height:1.2}
+  .user__name small{display:block;font-weight:500;font-size:11px;color:#8A9199;margin-top:2px}
+  .logout{font-size:13px;color:#8A9199;transition:.15s}
+  .logout:hover{color:#E85F00}
+
+  /* Page */
+  .page{padding:32px 0 72px}
+  .welcome{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:24px}
+  .welcome h1{font-size:clamp(24px,3vw,30px);margin:0 0 4px;letter-spacing:-.01em}
+  .welcome p{margin:0;font-size:15px;color:#6B7178}
+
+  /* Tabs */
+  .tabs{
+    display:flex;gap:26px;border-bottom:1px solid #E9ECEF;margin-bottom:24px;overflow-x:auto;
+    scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .tabs::-webkit-scrollbar{display:none}
+  .tab{background:none;border:none;border-bottom:2px solid transparent;padding:12px 0;font-size:15px;font-weight:600;color:#8A9199;cursor:pointer;white-space:nowrap;transition:.15s}
+  .tab:hover{color:#1F2328}
+  .tab.is-active{color:#1F2328;border-bottom-color:#FF6A00}
+  .view{display:none}
+  .view.is-active{display:block}
+
+  /* Order card */
+  .order{background:#fff;border:1px solid #E9ECEF;border-radius:20px;padding:26px;box-shadow:0 12px 32px rgba(31,35,40,.05)}
+  .order__head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}
+  .order__num{font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#8A9199;margin:0 0 4px}
+  .order h2{font-size:22px;margin:0;letter-spacing:-.01em}
+  .status{font-size:12px;font-weight:700;padding:7px 12px;border-radius:999px;white-space:nowrap}
+  .status--new{background:#EDF0F2;color:#4A5058}
+  .status--accepted{background:#E8F0FE;color:#1A56C4}
+  .status--work{background:#FFF4EC;color:#B34A00}
+  .status--done{background:#EAF7EF;color:#1B7A45}
+  .status--cancel{background:#FDECEC;color:#A32B2B}
+
+  /* Stepper */
+  .status-steps{display:flex;margin:22px 0;padding:0}
+  .status-step{flex:1;position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center}
+  .status-step i{width:30px;height:30px;border-radius:50%;background:#EDF0F2;color:#8A9199;display:grid;place-items:center;font-style:normal;font-size:12px;font-weight:800;z-index:1}
+  .status-step span{font-size:11px;font-weight:600;color:#8A9199;line-height:1.3}
+  .status-step.done i{background:#EAF7EF;color:#1B7A45}
+  .status-step.done span{color:#1B7A45}
+  .status-step.active i{background:#FF6A00;color:#fff;box-shadow:0 0 0 4px rgba(255,106,0,.12)}
+  .status-step.active span{color:#1F2328}
+  .status-step:not(:last-child)::after{
+    content:'';position:absolute;top:14px;left:calc(50% + 20px);width:calc(100% - 40px);height:2px;background:#EDF0F2;
+  }
+  .status-step.done:not(:last-child)::after{background:#BDE5CC}
+
+  .order-info{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;background:#F9FAFB;border-radius:12px;padding:18px}
+  .order-info span{display:block;font-size:12px;color:#8A9199;margin-bottom:3px}
+  .order-info b{font-size:14px;line-height:1.35;font-weight:600}
+
+  .order-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+  .order-note{font-size:13px;color:#8A9199;margin:14px 0 0}
+  .cancelled-note{display:none;background:#FDECEC;color:#A32B2B;border-radius:10px;padding:12px 14px;font-size:14px;margin-top:18px}
+  .order.is-cancelled .cancelled-note{display:block}
+  .order.is-cancelled .status-steps{display:none}
+  .order.is-cancelled .order-actions{display:none}
+
+  /* Buttons */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;height:46px;padding:0 20px;
+    border-radius:10px;border:1px solid transparent;font-weight:600;font-size:14px;cursor:pointer;transition:.18s;white-space:nowrap;
+  }
+  .btn--primary{background:#FF6A00;color:#fff}
+  .btn--primary:hover{background:#E85F00}
+  .btn--ghost{background:#fff;border-color:#DDE1E5;color:#1F2328}
+  .btn--ghost:hover{border-color:#FF6A00;color:#E85F00}
+  .btn--danger{color:#C23B3B;border-color:#F0D4D4}
+  .btn--danger:hover{border-color:#D64545;color:#A32B2B}
+  .btn--sm{height:38px;padding:0 14px;font-size:13px}
+  .btn:focus-visible,a:focus-visible,button:focus-visible{outline:3px solid rgba(255,106,0,.35);outline-offset:2px}
+  .link-btn{background:none;border:none;color:#E85F00;font-weight:700;font-size:13px;cursor:pointer;padding:6px 0}
+  .link-btn:hover{color:#B94A00}
+
+  /* History */
+  .history{display:grid;gap:12px}
+  .hrow{
+    display:grid;grid-template-columns:110px 1fr 110px 110px 110px;gap:14px;align-items:center;
+    background:#fff;border:1px solid #E9ECEF;border-radius:14px;padding:16px 18px;
+  }
+  .hrow__date{font-size:13px;color:#8A9199}
+  .hrow__main b{display:block;font-size:15px;margin-bottom:2px}
+  .hrow__main span{font-size:12px;color:#8A9199}
+  .hrow__sum{font-weight:800;font-size:15px}
+  .hrow .status{justify-self:start}
+
+  /* Documents */
+  .doc-group{background:#fff;border:1px solid #E9ECEF;border-radius:16px;padding:20px;margin-bottom:14px}
+  .doc-head{display:flex;justify-content:space-between;gap:12px;align-items:baseline;margin-bottom:6px;flex-wrap:wrap}
+  .doc-head b{font-size:15px}
+  .doc-head span{font-size:12px;color:#8A9199}
+  .doc-row{display:flex;align-items:center;gap:12px;padding:12px 0;border-top:1px solid #F0F2F4}
+  .doc-ico{width:38px;height:38px;border-radius:9px;background:#FDECEC;color:#C23B3B;display:grid;place-items:center;font-size:10px;font-weight:800;flex-shrink:0}
+  .doc-name{flex:1;min-width:0}
+  .doc-name b{display:block;font-size:14px}
+  .doc-name span{font-size:12px;color:#8A9199}
+
+  /* Car */
+  .car-card{background:#fff;border:1px solid #E9ECEF;border-radius:16px;padding:24px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+  .car-ico{width:64px;height:64px;border-radius:14px;background:#F2F4F6;color:#FF6A00;display:grid;place-items:center;flex-shrink:0}
+  .car-main{flex:1;min-width:180px}
+  .car-main h3{font-size:18px;margin:0 0 3px}
+  .car-main p{font-size:13px;color:#6B7178;margin:0}
+  .car-form{display:none;margin-top:16px}
+  .car-form.is-open{display:block}
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .field{min-width:0}
+  .field label{display:block;font-size:12px;font-weight:700;color:#6B7178;text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px}
+  .field input{width:100%;height:46px;border:1px solid #DDE1E5;border-radius:10px;padding:0 12px;outline:none;transition:.15s}
+  .field input:focus{border-color:#FF6A00;box-shadow:0 0 0 3px rgba(255,106,0,.12)}
+
+  /* Profile */
+  .card{background:#fff;border:1px solid #E9ECEF;border-radius:16px;padding:24px}
+  .card h3{font-size:17px;margin:0 0 18px}
+  .card + .card{margin-top:14px}
+  .checkline{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#4A5058;line-height:1.45;margin-top:14px}
+  .checkline input{width:18px;height:18px;accent-color:#FF6A00;margin-top:1px;flex-shrink:0}
+  .profile-actions{margin-top:20px}
+  .security{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+  .security div b{display:block;font-size:14px}
+  .security div span{font-size:12px;color:#8A9199}
+
+  /* Empty */
+  .empty{background:#fff;border:1px dashed #DDE1E5;border-radius:16px;padding:28px;text-align:center;font-size:14px;color:#6B7178}
+
+  /* Modal */
+  .modal{position:fixed;inset:0;z-index:100;background:rgba(15,18,21,.55);display:none;align-items:center;justify-content:center;padding:20px}
+  .modal.is-open{display:flex}
+  .modal__card{background:#fff;border-radius:20px;max-width:440px;width:100%;padding:26px;box-shadow:0 24px 64px rgba(0,0,0,.25)}
+  .modal__icon{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;margin-bottom:16px}
+  .modal__icon.warn{background:#FFF4EC;color:#E85F00}
+  .modal__icon.info{background:#E8F0FE;color:#1A56C4}
+  .modal h3{font-size:21px;margin:0 0 8px}
+  .modal p{font-size:14px;line-height:1.5;color:#5A6169;margin:0 0 18px}
+  .modal__actions{display:flex;gap:10px;flex-wrap:wrap}
+  .modal__actions .btn{flex:1}
+
+  /* Toast */
+  .toast{
+    position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);
+    background:#1F2328;color:#fff;padding:12px 18px;border-radius:10px;font-size:14px;
+    opacity:0;pointer-events:none;transition:.25s;z-index:200;max-width:calc(100vw - 40px);text-align:center;
+  }
+  .toast.is-visible{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  /* Responsive */
+  @media (max-width:820px){
+    .header__inner{height:64px;gap:12px}
+    .user__name{display:none}
+    .order-info{grid-template-columns:1fr 1fr}
+    .hrow{grid-template-columns:1fr 1fr;gap:8px 14px}
+    .hrow__date{grid-column:1/-1}
+    .hrow__main{grid-column:1/-1}
+    .hrow .status{justify-self:start}
+  }
+  @media (max-width:600px){
+    .page{padding:22px 0 56px}
+    .order{padding:20px}
+    .tabs{gap:4px 16px;flex-wrap:wrap}
+    .tab{font-size:14px;padding:11px 0}
+    .form-grid{grid-template-columns:1fr}
+    .order-info{grid-template-columns:1fr}
+    .status-step span{font-size:10px}
+    .logout{display:none}
+    .notif{width:290px;right:-90px}
+    .modal__actions{flex-direction:column-reverse}
+  }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="container header__inner">
+    <a class="logo" href="index.html" id="ALogo" data-name="ALogo">
+      <span class="logo__mark">Ш</span>
+      <span class="logo__text">ШИНОМОНТАЖ<small>Зажопинск</small></span>
+    </a>
+
+    <div class="header__right">
+      <div class="bell-wrap">
+        <button class="bell" id="BBell" aria-label="Уведомления" aria-expanded="false" data-name="BBell">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 8-3 8h18s-3-1-3-8"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg>
+          <span class="bell__dot" id="bellDot"></span>
+        </button>
+
+        <div class="notif" id="notif">
+          <div class="notif__head" id="LNotificationsTitle" data-name="LNotificationsTitle">Уведомления</div>
+          <div class="notif__item" id="LNotification1" data-name="LNotification1"><i></i><div>Заявка № 1042 принята мастером<span>Сегодня, 18:42</span></div></div>
+          <div class="notif__item" id="LNotification2" data-name="LNotification2"><i></i><div>Напоминание: завтра в 10:00<span>Сегодня, 18:42</span></div></div>
+          <div class="notif__item" id="LNotification3" data-name="LNotification3"><i style="background:#DDE1E5"></i><div>Заказ № 1017 выполнен, документы готовы<span>12 октября</span></div></div>
+        </div>
+      </div>
+
+      <div class="user" id="LUser" data-name="LUser">
+        <div class="avatar">И</div>
+        <div class="user__name">Иван<small>Клиент</small></div>
+      </div>
+
+      <a class="logout" href="login.html" id="ALogout" data-name="ALogout">Выйти</a>
+    </div>
+  </div>
+</header>
+
+<main class="page">
+  <div class="container">
+    <div class="welcome">
+      <div>
+        <h1 id="LGreeting" data-name="LGreeting">Здравствуйте, Иван</h1>
+        <p id="LWelcomeText" data-name="LWelcomeText">Ближайшая запись — завтра в 10:00. Если что-то изменится, мастер позвонит.</p>
+      </div>
+      <a class="btn btn--primary" href="booking.html" id="BBookMore" data-name="BBookMore">Записаться ещё</a>
+    </div>
+
+    <div class="tabs" role="tablist" data-name="TabActive–TabProfile">
+      <button class="tab is-active" data-tab="active" role="tab" id="TabActive" data-name="TabActive">Активные</button>
+      <button class="tab" data-tab="history" role="tab" id="TabHistory" data-name="TabHistory">История</button>
+      <button class="tab" data-tab="docs" role="tab" id="TabDocs" data-name="TabDocs">Документы</button>
+      <button class="tab" data-tab="car" role="tab" id="TabCar" data-name="TabCar">Мой автомобиль</button>
+      <button class="tab" data-tab="profile" role="tab" id="TabProfile" data-name="TabProfile">Профиль</button>
+    </div>
+
+    <!-- Активные -->
+    <section class="view is-active" data-view="active">
+      <article class="order" id="activeOrder">
+        <div class="order__head">
+          <div>
+            <p class="order__num" id="LOrderNumber" data-name="LOrderNumber">Заказ № 1042</p>
+            <h2 id="LOrderTitle" data-name="LOrderTitle">Смена шин + балансировка</h2>
+          </div>
+          <span class="status status--accepted" id="LStatusBadge" data-name="LStatusBadge">Принят</span>
+        </div>
+
+        <div class="status-steps" id="LStatusSteps" data-name="LStatusSteps">
+          <div class="status-step done"><i>✓</i><span>Новый</span></div>
+          <div class="status-step active"><i>2</i><span>Принят</span></div>
+          <div class="status-step"><i>3</i><span>В работе</span></div>
+          <div class="status-step"><i>4</i><span>Выполнен</span></div>
+        </div>
+
+        <div class="order-info" id="LOrderInfo" data-name="LOrderInfo">
+          <div><span>Когда</span><b>Завтра, 10:00–11:00</b></div>
+          <div><span>Мастер</span><b>Сергей</b></div>
+          <div><span>Автомобиль</span><b>Lada Vesta · А123ВС 00</b></div>
+          <div><span>Предварительно</span><b>2 100 ₽</b></div>
+          <div><span>Готовность</span><b>Мастер уточнит после осмотра</b></div>
+          <div><span>Адрес</span><b>ул. Центральная, 12</b></div>
+        </div>
+
+        <div class="order-actions">
+          <button class="btn btn--ghost" id="BReschedule" type="button" data-name="BReschedule">Перенести</button>
+          <button class="btn btn--ghost btn--danger" id="BCancel" type="button" data-name="BCancel">Отменить</button>
+          <a class="btn btn--ghost" href="tel:+70000000000" id="BCall" data-name="BCall">Позвонить</a>
+        </div>
+
+        <p class="order-note" id="LOrderNote" data-name="LOrderNote">Бесплатная отмена — не позднее чем за 24 часа до визита.</p>
+
+        <div class="cancelled-note">Запись отменена. Если передумаете — создайте новую, свободные окна есть на неделю вперёд.</div>
+      </article>
+
+      <div class="empty" style="margin-top:14px">
+        Документы по этой записи появятся после выполнения работ.
+      </div>
+    </section>
+
+    <!-- История -->
+    <section class="view" data-view="history">
+      <div class="history" id="LHistoryList" data-name="LHistoryList">
+        <div class="hrow" id="LHistoryRow1" data-name="LHistoryRow1">
+          <div class="hrow__date">12 октября 2026</div>
+          <div class="hrow__main"><b>Смена шин</b><span>Мастер Сергей · Lada Vesta</span></div>
+          <div class="hrow__sum">1 500 ₽</div>
+          <span class="status status--done">Выполнен</span>
+          <button class="link-btn" data-docs="1017" id="BDoc1017" data-name="BDoc1017">Документы</button>
+        </div>
+
+        <div class="hrow" id="LHistoryRow2" data-name="LHistoryRow2">
+          <div class="hrow__date">3 октября 2026</div>
+          <div class="hrow__main"><b>Диагностика</b><span>Мастер Алексей · Lada Vesta</span></div>
+          <div class="hrow__sum">1 000 ₽</div>
+          <span class="status status--done">Выполнен</span>
+          <button class="link-btn" data-docs="1014" id="BDoc1014" data-name="BDoc1014">Документы</button>
+        </div>
+
+        <div class="hrow" id="LHistoryRow3" data-name="LHistoryRow3">
+          <div class="hrow__date">21 сентября 2026</div>
+          <div class="hrow__main"><b>Замена масла</b><span>Мастер Дмитрий · Lada Vesta</span></div>
+          <div class="hrow__sum">800 ₽</div>
+          <span class="status status--done">Выполнен</span>
+          <button class="link-btn" data-docs="1008" id="BDoc1008" data-name="BDoc1008">Документы</button>
+        </div>
+
+        <div class="hrow" id="LHistoryRow4" data-name="LHistoryRow4">
+          <div class="hrow__date">15 сентября 2026</div>
+          <div class="hrow__main"><b>Развал-схождение</b><span>Мастер Сергей · Lada Vesta</span></div>
+          <div class="hrow__sum">—</div>
+          <span class="status status--cancel">Отменён</span>
+          <button class="link-btn" data-toast="По отменённой записи документы не формируются" id="BDetails1015" data-name="BDetails1015">Подробнее</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Документы -->
+    <section class="view" data-view="docs">
+      <div class="doc-group" id="doc1017">
+        <div class="doc-head" id="LDocGroup1017" data-name="LDocGroup1017"><b>Заказ № 1017</b><span>12 октября 2026 · Смена шин · 1 500 ₽</span></div>
+
+        <div class="doc-row">
+          <div class="doc-ico">PDF</div>
+          <div class="doc-name"><b>Заказ-наряд</b><span>12 октября 2026 · 118 КБ</span></div>
+          <button class="btn btn--ghost btn--sm" data-doc id="BDownload10171" data-name="BDownload1017">Скачать</button>
+        </div>
+        <div class="doc-row">
+          <div class="doc-ico">PDF</div>
+          <div class="doc-name"><b>Отчёт мастера</b><span>12 октября 2026 · 96 КБ</span></div>
+          <button class="btn btn--ghost btn--sm" data-doc id="BDownload10172" data-name="BDownload1017">Скачать</button>
+        </div>
+        <div class="doc-row">
+          <div class="doc-ico">PDF</div>
+          <div class="doc-name"><b>Акт выполненных услуг</b><span>12 октября 2026 · 104 КБ</span></div>
+          <button class="btn btn--ghost btn--sm" data-doc id="BDownload10173" data-name="BDownload1017">Скачать</button>
+        </div>
+        <div class="doc-row">
+          <div class="doc-ico">PDF</div>
+          <div class="doc-name"><b>Чек об оплате</b><span>12 октября 2026 · 82 КБ</span></div>
+          <button class="btn btn--ghost btn--sm" data-doc id="BDownload10174" data-name="BDownload1017">Скачать</button>
+        </div>
+      </div>
+
+      <div class="doc-group" id="doc1014">
+        <div class="doc-head" id="LDocGroup1014" data-name="LDocGroup1014"><b>Заказ № 1014</b><span>3 октября 2026 · Диагностика · 1 000 ₽</span></div>
+
+        <div class="doc-row">
+          <div class="doc-ico">PDF</div>
+          <div class="doc-name"><b>Заказ-наряд</b><span>3 октября 2026 · 112 КБ</span></div>
+          <button class="btn btn--ghost btn--sm" data-doc id="BDownload10141" data-name="BDownload1014">Скачать</button>
+        </div>
+        <div class="doc-row">
+          <div class="doc-ico">PDF</div>
+          <div class="doc-name"><b>Отчёт мастера</b><span>3 октября 2026 · 90 КБ</span></div>
+          <button class="btn btn--ghost btn--sm" data-doc id="BDownload10142" data-name="BDownload1014">Скачать</button>
+        </div>
+        <div class="doc-row">
+          <div class="doc-ico">PDF</div>
+          <div class="doc-name"><b>Акт выполненных услуг</b><span>3 октября 2026 · 98 КБ</span></div>
+          <button class="btn btn--ghost btn--sm" data-doc id="BDownload10143" data-name="BDownload1014">Скачать</button>
+        </div>
+        <div class="doc-row">
+          <div class="doc-ico">PDF</div>
+          <div class="doc-name"><b>Чек об оплате</b><span>3 октября 2026 · 80 КБ</span></div>
+          <button class="btn btn--ghost btn--sm" data-doc id="BDownload10144" data-name="BDownload1014">Скачать</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Автомобиль -->
+    <section class="view" data-view="car">
+      <div class="car-card" id="LCarCard" data-name="LCarCard">
+        <div class="car-ico">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 16h14M6 16l1.5-5h9L18 16M7 16v2M17 16v2M4 12h2M18 12h2"/><circle cx="8" cy="16" r="1"/><circle cx="16" cy="16" r="1"/></svg>
+        </div>
+        <div class="car-main">
+          <h3>Lada Vesta</h3>
+          <p>2021 · А123ВС 00 · бензин, 1.6</p>
+        </div>
+        <button class="btn btn--ghost btn--sm" id="BEditCar" type="button" data-name="BEditCar">Редактировать</button>
+      </div>
+
+      <div class="car-form" id="carForm">
+        <div class="card">
+          <h3>Данные автомобиля</h3>
+          <div class="form-grid">
+            <div class="field"><label for="TCarBrand">Марка</label><input id="TCarBrand" value="Lada" name="TCarBrand" data-name="TCarBrand"></div>
+            <div class="field"><label for="TCarModel">Модель</label><input id="TCarModel" value="Vesta" name="TCarModel" data-name="TCarModel"></div>
+            <div class="field"><label for="TCarYear">Год</label><input id="TCarYear" value="2021" name="TCarYear" data-name="TCarYear"></div>
+            <div class="field"><label for="TCarPlate">Госномер</label><input id="TCarPlate" value="А123ВС 00" name="TCarPlate" data-name="TCarPlate"></div>
+            <div class="field"><label for="TCarEngine">Двигатель</label><input id="TCarEngine" value="1.6, бензин" name="TCarEngine" data-name="TCarEngine"></div>
+          </div>
+          <div class="profile-actions">
+            <button class="btn btn--primary btn--sm" id="BSaveCar" type="button" data-name="BSaveCar">Сохранить</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Профиль -->
+    <section class="view" data-view="profile">
+      <div class="card">
+        <h3 id="LPersonalData" data-name="LPersonalData">Личные данные</h3>
+        <div class="form-grid">
+          <div class="field"><label for="TProfileName">Имя</label><input id="TProfileName" value="Иван" name="TProfileName" data-name="TProfileName"></div>
+          <div class="field"><label for="TProfilePhone">Телефон</label><input id="TProfilePhone" value="+7 666 666-66-66" name="TProfilePhone" data-name="TProfilePhone"></div>
+          <div class="field"><label for="TProfileEmail">Email</label><input id="TProfileEmail" value="ivan@mail.ru" name="TProfileEmail" data-name="TProfileEmail"></div>
+        </div>
+
+        <label class="checkline"><input type="checkbox" checked id="CNotifyEmail" name="CNotifyEmail" data-name="CNotifyEmail"> <span>Присылать уведомления о записи на email</span></label>
+        <label class="checkline"><input type="checkbox" checked id="CNotifySite" name="CNotifySite" data-name="CNotifySite"> <span>Показывать уведомления на сайте</span></label>
+
+        <div class="profile-actions">
+          <button class="btn btn--primary btn--sm" id="BSaveProfile" type="button" data-name="BSaveProfile">Сохранить</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 id="LSecurityTitle" data-name="LSecurityTitle">Безопасность</h3>
+        <div class="security">
+          <div><b>Пароль</b><span>••••••••</span></div>
+          <button class="btn btn--ghost btn--sm" id="BChangePass" type="button" data-name="BChangePass">Изменить</button>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<!-- Модальное окно отмены -->
+<div class="modal" id="MCancelOrder" role="dialog" aria-modal="true" data-name="MCancelOrder">
+  <div class="modal__card">
+    <div class="modal__icon warn">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>
+    </div>
+    <h3 id="LCancelTitle" data-name="LCancelTitle">Отменить запись?</h3>
+    <p id="LCancelText" data-name="LCancelText">Запись на завтра, 10:00 будет отменена. Если до визита меньше 24 часов, отмена возможна по уважительной причине или со штрафом 500 ₽.</p>
+    <div class="modal__actions">
+      <button class="btn btn--ghost" id="BCancelNo" type="button" data-name="BCancelNo">Оставить</button>
+      <button class="btn btn--primary" id="BCancelYes" type="button" data-name="BCancelYes">Отменить запись</button>
+    </div>
+  </div>
+</div>
+
+<!-- Модальное окно переноса -->
+<div class="modal" id="MMoveOrder" role="dialog" aria-modal="true" data-name="MMoveOrder">
+  <div class="modal__card">
+    <div class="modal__icon info">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    </div>
+    <h3 id="LMoveTitle" data-name="LMoveTitle">Перенести запись</h3>
+    <p id="LMoveText" data-name="LMoveText">Отправим мастеру запрос на перенос. Он подберёт новое время и подтвердит его — вы получите уведомление.</p>
+    <div class="modal__actions">
+      <button class="btn btn--ghost" id="BMoveNo" type="button" data-name="BMoveNo">Отмена</button>
+      <button class="btn btn--primary" id="BMoveYes" type="button" data-name="BMoveYes">Отправить запрос</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+  const toast = document.getElementById('toast');
+  let toastTimer = null;
+
+  function showToast(text) {
+    toast.textContent = text;
+    toast.classList.add('is-visible');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toast.classList.remove('is-visible'), 2600);
+  }
+
+  /* ---------- Телефон: +7 при фокусе ---------- */
+  function setupPhonePrefix(input) {
+    if (!input) return;
+
+    input.addEventListener('focus', () => {
+      if (input.value.trim()) return;
+
+      input.value = '+7 ';
+      const end = input.value.length;
+
+      setTimeout(() => {
+        if (document.activeElement === input) input.setSelectionRange(end, end);
+      }, 0);
+    });
+
+    input.addEventListener('blur', () => {
+      if (input.value.trim() === '+7') input.value = '';
+    });
+  }
+
+  setupPhonePrefix(document.getElementById('TProfilePhone'));
+
+  /* ---------- Вкладки ---------- */
+  document.querySelectorAll('.tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('is-active'));
+      tab.classList.add('is-active');
+
+      document.querySelectorAll('.view').forEach(v => {
+        v.classList.toggle('is-active', v.dataset.view === tab.dataset.tab);
+      });
+    });
+  });
+
+  function openTab(name) {
+    const tab = document.querySelector('.tab[data-tab="' + name + '"]');
+    if (tab) tab.click();
+  }
+
+  /* ---------- Уведомления ---------- */
+  const bell = document.getElementById('BBell');
+  const notif = document.getElementById('notif');
+
+  bell.addEventListener('click', e => {
+    e.stopPropagation();
+    const open = notif.classList.toggle('is-open');
+    bell.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if (open) document.getElementById('bellDot').style.display = 'none';
+  });
+
+  document.addEventListener('click', e => {
+    if (!notif.contains(e.target) && !bell.contains(e.target)) {
+      notif.classList.remove('is-open');
+      bell.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  /* ---------- Модальные окна ---------- */
+  const cancelModal = document.getElementById('MCancelOrder');
+  const moveModal = document.getElementById('MMoveOrder');
+
+  function openModal(modal) {
+    modal.classList.add('is-open');
+    document.body.classList.add('locked');
+  }
+
+  function closeModal(modal) {
+    modal.classList.remove('is-open');
+    document.body.classList.remove('locked');
+  }
+
+  document.getElementById('BCancel').addEventListener('click', () => openModal(cancelModal));
+  document.getElementById('BCancelNo').addEventListener('click', () => closeModal(cancelModal));
+
+  document.getElementById('BReschedule').addEventListener('click', () => openModal(moveModal));
+  document.getElementById('BMoveNo').addEventListener('click', () => closeModal(moveModal));
+
+  document.getElementById('BMoveYes').addEventListener('click', () => {
+    closeModal(moveModal);
+    showToast('Запрос на перенос отправлен мастеру');
+  });
+
+  document.getElementById('BCancelYes').addEventListener('click', () => {
+    closeModal(cancelModal);
+
+    const order = document.getElementById('activeOrder');
+    const badge = document.getElementById('LStatusBadge');
+
+    order.classList.add('is-cancelled');
+    badge.textContent = 'Отменён';
+    badge.className = 'status status--cancel';
+
+    showToast('Запись отменена');
+  });
+
+  [cancelModal, moveModal].forEach(modal => {
+    modal.addEventListener('click', e => {
+      if (e.target === modal) closeModal(modal);
+    });
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key !== 'Escape') return;
+    [cancelModal, moveModal].forEach(m => {
+      if (m.classList.contains('is-open')) closeModal(m);
+    });
+  });
+
+  /* ---------- Документы ---------- */
+  document.querySelectorAll('[data-docs]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      openTab('docs');
+      const group = document.getElementById('doc' + btn.dataset.docs);
+      if (group) group.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  document.querySelectorAll('[data-doc]').forEach(btn => {
+    btn.addEventListener('click', () => showToast('А вот фиг тебе'));
+  });
+
+  document.querySelectorAll('[data-toast]').forEach(btn => {
+    btn.addEventListener('click', () => showToast(btn.dataset.toast));
+  });
+
+  /* ---------- Автомобиль ---------- */
+  const carForm = document.getElementById('carForm');
+  document.getElementById('BEditCar').addEventListener('click', () => {
+    carForm.classList.toggle('is-open');
+  });
+
+  document.getElementById('BSaveCar').addEventListener('click', () => {
+    const brand = document.getElementById('TCarBrand').value.trim();
+    const model = document.getElementById('TCarModel').value.trim();
+    const year = document.getElementById('TCarYear').value.trim();
+    const plate = document.getElementById('TCarPlate').value.trim();
+
+    document.querySelector('.car-main h3').textContent = brand + ' ' + model;
+    document.querySelector('.car-main p').textContent = year + ' · ' + plate;
+    carForm.classList.remove('is-open');
+    showToast('Данные автомобиля сохранены');
+  });
+
+  /* ---------- Профиль ---------- */
+  document.getElementById('BSaveProfile').addEventListener('click', () => {
+    showToast('Профиль сохранён');
+  });
+
+  document.getElementById('BChangePass').addEventListener('click', () => {
+    showToast('Ссылка для смены пароля отправлена на email');
+  });
+</script>
+</body>
+</html>
